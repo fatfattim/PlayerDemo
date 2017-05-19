@@ -19,13 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func giveRootViewController() {
+        let navigationController = UINavigationController()
+        let rootView = RootViewController() //ViewController = Name of your controller
+        navigationController.viewControllers = [rootView]
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
-        let rootView = RootViewController()
-        
-        window?.rootViewController = rootView
+        window!.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        self.window!.backgroundColor = UIColor.white;
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

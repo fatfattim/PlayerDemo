@@ -13,6 +13,7 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print("touch viewDidLoad")
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +23,10 @@ class RootViewController: UIViewController {
 
     @IBAction func touchUpInsidePlayerBtn(_ sender: Any) {
         print("touch player button")
+        
+        let vc1 = RootViewController()
+        
+        self.navigationController?.pushViewController(vc1, animated: true)
     }
     /*
     // MARK: - Navigation
