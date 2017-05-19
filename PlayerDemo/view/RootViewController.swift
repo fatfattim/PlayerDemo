@@ -25,9 +25,8 @@ class RootViewController: UIViewController {
         print("touch player button")
         
         let playerVC = PlayerViewController()
-        playerVC.title = "プレーヤー"
+        playerVC.title = NSLocalizedString("Player", comment: "Player Title")
         self.navigationController?.pushViewController(playerVC, animated: true)
-
     }
     /*
     // MARK: - Navigation
