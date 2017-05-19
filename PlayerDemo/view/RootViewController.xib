@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootViewController" customModule="PlayerDemo" customModuleProvider="target">
             <connections>
+                <outlet property="naviPlayerBtn" destination="1Fw-oC-fII" id="E2l-e1-0E5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

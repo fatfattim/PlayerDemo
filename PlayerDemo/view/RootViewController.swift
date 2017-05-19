@@ -10,10 +10,20 @@ import UIKit
 
 class RootViewController: UIViewController {
 
+    @IBOutlet weak var naviPlayerBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("touch viewDidLoad")
+        setLocalization()
+    }
+
+    func setLocalization() {
+        let backItem = UIBarButtonItem()
+        backItem.title = NSLocalizedString("Back", comment: "Previous page")
+        self.navigationItem.backBarButtonItem = backItem
+        
+        naviPlayerBtn.setTitle(NSLocalizedString("Enter Player Page", comment: "Previous page"), for: UIControlState.normal)
     }
 
     override func didReceiveMemoryWarning() {
