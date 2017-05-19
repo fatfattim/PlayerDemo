@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1818D8431ECEA902007D4169 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D8411ECEA902007D4169 /* PlayerViewController.swift */; };
+		1818D8441ECEA902007D4169 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1818D8421ECEA902007D4169 /* PlayerViewController.xib */; };
 		18C16FF21ECD9F7B00AE86B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C16FF11ECD9F7B00AE86B8 /* AppDelegate.swift */; };
 		18C16FF91ECD9F7B00AE86B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C16FF81ECD9F7B00AE86B8 /* Assets.xcassets */; };
 		18C170081ECE83B700AE86B8 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C170061ECE83B700AE86B8 /* RootViewController.swift */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1818D8411ECEA902007D4169 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		1818D8421ECEA902007D4169 /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		18C16FEE1ECD9F7B00AE86B8 /* PlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C16FF11ECD9F7B00AE86B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18C16FF81ECD9F7B00AE86B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 			children = (
 				18C170061ECE83B700AE86B8 /* RootViewController.swift */,
 				18C170071ECE83B700AE86B8 /* RootViewController.xib */,
+				1818D8411ECEA902007D4169 /* PlayerViewController.swift */,
+				1818D8421ECEA902007D4169 /* PlayerViewController.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -133,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18C16FF91ECD9F7B00AE86B8 /* Assets.xcassets in Resources */,
+				1818D8441ECEA902007D4169 /* PlayerViewController.xib in Resources */,
 				18C170091ECE83B700AE86B8 /* RootViewController.xib in Resources */,
 				18C1700B1ECE8C1C00AE86B8 /* Default-568h@2x.png in Resources */,
 			);
@@ -147,6 +154,7 @@
 			files = (
 				18C16FF21ECD9F7B00AE86B8 /* AppDelegate.swift in Sources */,
 				18C170081ECE83B700AE86B8 /* RootViewController.swift in Sources */,
+				1818D8431ECEA902007D4169 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +303,7 @@
 				18C170021ECD9F7B00AE86B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

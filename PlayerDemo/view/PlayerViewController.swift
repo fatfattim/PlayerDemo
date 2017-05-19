@@ -1,5 +1,5 @@
 //
-//  RootViewController.swift
+//  PlayerViewController.swift
 //  PlayerDemo
 //
 //  Created by TimChen on 2017/5/19.
@@ -8,27 +8,20 @@
 
 import UIKit
 
-class RootViewController: UIViewController {
+class PlayerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
-        print("touch viewDidLoad")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
-    @IBAction func touchUpInsidePlayerBtn(_ sender: Any) {
-        print("touch player button")
-        
-        let playerVC = PlayerViewController()
-        playerVC.title = "プレーヤー"
-        self.navigationController?.pushViewController(playerVC, animated: true)
-
-    }
     /*
     // MARK: - Navigation
 
