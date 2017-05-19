@@ -15,35 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        test1()
+        giveRootViewController()
         return true
     }
-
-    func test2() {
-        print("Void function")
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window!.backgroundColor = UIColor.white;
-        
-        // Create a nav/vc pair using the custom ViewController class
-        
-        let nav = UINavigationController()
-        
-        
-        // Push the vc onto the nav
-        nav.pushViewController(RootViewController(nibName: "RootViewController", bundle: nil), animated: true)
-        
-        // Set the window’s root view controller
-        //self.window!.rootViewController = nav
-        
-        // Present the window
-        self.window!.makeKeyAndVisible()
-    }
     
-    func test1() {
-        print("Void function")
+    func giveRootViewController() {
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
-        let rootView = RootViewController(nibName: "RootViewController", bundle: nil)
+        let rootView = RootViewController()
         
         window?.rootViewController = rootView
         window?.makeKeyAndVisible()
