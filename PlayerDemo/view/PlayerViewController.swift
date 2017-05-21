@@ -19,6 +19,14 @@ private var playerViewControllerKVOContext = 0
 
 class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     
+    // MARK: - IBOutlets
+    @IBOutlet weak var timeSlider: UISlider!
+    @IBOutlet weak var startTimeLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var rewindButton: UIButton!
+    @IBOutlet weak var playPauseButton: UIButton!
+    @IBOutlet weak var fastForwardButton: UIButton!
+    @IBOutlet weak var playerView: PlayerView!
 
     // UINavigationControllerDelegate method
     public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
@@ -124,21 +132,6 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             player.replaceCurrentItem(with: self.playerItem)
         }
     }
-    
-    // MARK: - IBOutlets
-    
-
-    @IBOutlet weak var timeSlider: UISlider!
-    @IBOutlet weak var startTimeLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    
-    @IBOutlet weak var rewindButton: UIButton!
-    
-    @IBOutlet weak var playPauseButton: UIButton!
-
-    @IBOutlet weak var fastForwardButton: UIButton!
-    
-    @IBOutlet weak var playerView: PlayerView!
     
     // MARK: - View Controller
     
