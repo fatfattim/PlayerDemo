@@ -16,15 +16,18 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         return [UIInterfaceOrientationMask.landscapeLeft , UIInterfaceOrientationMask.landscapeRight]
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private func setOrientation() {
         self.navigationController?.delegate = self
-      
         if (UIApplication.shared.statusBarOrientation.isPortrait) {
-      
             let value = UIInterfaceOrientation.landscapeLeft.rawValue
             UIDevice.current.setValue(value, forKey: "orientation")
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setOrientation()
     }
     
     override func didReceiveMemoryWarning() {
