@@ -10,6 +10,8 @@
 		1818D8431ECEA902007D4169 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D8411ECEA902007D4169 /* PlayerViewController.swift */; };
 		1818D8441ECEA902007D4169 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1818D8421ECEA902007D4169 /* PlayerViewController.xib */; };
 		1818D84E1ECEDB9A007D4169 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1818D8501ECEDB9A007D4169 /* Localizable.strings */; };
+		1818D85D1ED18820007D4169 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D85C1ED18820007D4169 /* PlayerView.swift */; };
+		1818D8611ED1D207007D4169 /* ElephantSeals.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1818D8601ED1D207007D4169 /* ElephantSeals.mov */; };
 		18C16FF21ECD9F7B00AE86B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C16FF11ECD9F7B00AE86B8 /* AppDelegate.swift */; };
 		18C16FF91ECD9F7B00AE86B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C16FF81ECD9F7B00AE86B8 /* Assets.xcassets */; };
 		18C170081ECE83B700AE86B8 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C170061ECE83B700AE86B8 /* RootViewController.swift */; };
@@ -21,6 +23,8 @@
 		1818D8411ECEA902007D4169 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		1818D8421ECEA902007D4169 /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		1818D84F1ECEDB9A007D4169 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1818D85C1ED18820007D4169 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		1818D8601ED1D207007D4169 /* ElephantSeals.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ElephantSeals.mov; sourceTree = SOURCE_ROOT; };
 		18C16FEE1ECD9F7B00AE86B8 /* PlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C16FF11ECD9F7B00AE86B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18C16FF81ECD9F7B00AE86B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1818D85B1ED18759007D4169 /* player */ = {
+			isa = PBXGroup;
+			children = (
+				1818D85C1ED18820007D4169 /* PlayerView.swift */,
+			);
+			path = player;
+			sourceTree = "<group>";
+		};
 		18C16FE51ECD9F7B00AE86B8 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +74,8 @@
 		18C16FF01ECD9F7B00AE86B8 /* PlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1818D8601ED1D207007D4169 /* ElephantSeals.mov */,
+				1818D85B1ED18759007D4169 /* player */,
 				18C170031ECDA71800AE86B8 /* view */,
 				18C16FF11ECD9F7B00AE86B8 /* AppDelegate.swift */,
 				18C16FF81ECD9F7B00AE86B8 /* Assets.xcassets */,
@@ -146,6 +160,7 @@
 				18C16FF91ECD9F7B00AE86B8 /* Assets.xcassets in Resources */,
 				1818D8441ECEA902007D4169 /* PlayerViewController.xib in Resources */,
 				18C170091ECE83B700AE86B8 /* RootViewController.xib in Resources */,
+				1818D8611ED1D207007D4169 /* ElephantSeals.mov in Resources */,
 				18C1700B1ECE8C1C00AE86B8 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,6 +175,7 @@
 				18C16FF21ECD9F7B00AE86B8 /* AppDelegate.swift in Sources */,
 				18C170081ECE83B700AE86B8 /* RootViewController.swift in Sources */,
 				1818D8431ECEA902007D4169 /* PlayerViewController.swift in Sources */,
+				1818D85D1ED18820007D4169 /* PlayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
