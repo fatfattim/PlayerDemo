@@ -8,15 +8,28 @@
 
 import UIKit
 
-class ZappingViewController: UIViewController {
+class ZappingViewController: UIViewController , UINavigationControllerDelegate {
 
+    // MARK: - UINavigationControllerDelegate method
+    public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+        return [UIInterfaceOrientationMask.landscapeLeft , UIInterfaceOrientationMask.landscapeRight]
+    }
+    
+    private func setOrientation() {
+        self.navigationController?.delegate = self
+        if (UIApplication.shared.statusBarOrientation.isPortrait) {
+            let value = UIInterfaceOrientation.landscapeRight.rawValue
+            UIDevice.current.setValue(value, forKey: "orientation")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setOrientation()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    private func shouldAutorotate() -> Bool {
+        return true
     }
-
 }
