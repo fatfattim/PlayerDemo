@@ -127,11 +127,5 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
             controller.didMove(toParentViewController: self)
             
         }
-        
-        if(page % 2 == 1) { //testing codes
-            controller.view.backgroundColor = UIColor.red
-        } else {
-            controller.view.backgroundColor = UIColor.blue
-        }
     }
 }

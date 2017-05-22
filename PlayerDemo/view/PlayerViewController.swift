@@ -244,6 +244,8 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     // MARK: - IBActions
     
     @IBAction func playPauseButtonWasPressed(_ sender: UIButton) {
+        print(player.status)
+        
         if player.rate != 1.0 {
             // Not playing forward, so play.
             if currentTime == duration {
@@ -261,6 +263,7 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func rewindButtonWasPressed(_ sender: UIButton) {
             // Rewind no faster than -2.0.
+        print("rewindButtonWasPressed")
         rate = max(player.rate - 2.0, -2.0)
     }
     
@@ -298,13 +301,16 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
                 newDuration = kCMTimeZero
             }
             
-            let hasValidDuration = newDuration.isNumeric && newDuration.value != 0
+            //let hasValidDuration = newDuration.isNumeric && newDuration.value != 0
+            var hasValidDuration = newDuration.isNumeric && newDuration.value != 0
             let newDurationSeconds = hasValidDuration ? CMTimeGetSeconds(newDuration) : 0.0
             let currentTime = hasValidDuration ? Float(CMTimeGetSeconds(player.currentTime())) : 0.0
             
             timeSlider.maximumValue = Float(newDurationSeconds)
             
             timeSlider.value = currentTime
+            
+            hasValidDuration = true
             
             rewindButton.isEnabled = hasValidDuration
             
