@@ -25,8 +25,8 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
     // At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // switch the indicator when more than 50% of the previous/next page is visible
-        let pageWidth = scrollView.frame.width;
-        currentPage = Int(floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + CGFloat(1));
+        let pageWidth = scrollView.frame.width
+        currentPage = Int(floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + CGFloat(1))
         
         // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
         
@@ -64,11 +64,11 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         
         // view controllers are created lazily
         // in the meantime, load the array with placeholders which will be replaced on demand
-        let controllers: NSMutableArray = [];
+        let controllers: NSMutableArray = []
         for _ in 1...COUNT_PAGE {
             controllers.add("")
         }
-        self.viewControllers = controllers;
+        self.viewControllers = controllers
         
         scrollView.isPagingEnabled = true
         
@@ -77,16 +77,18 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         scrollView.bounces = false
 
         let width = scrollView.frame.width * CGFloat(COUNT_PAGE)
-        scrollView.contentSize = CGSize(width: width, height: self.scrollView.frame.height);
-        scrollView.showsHorizontalScrollIndicator = false;
-        scrollView.showsVerticalScrollIndicator = false;
-        scrollView.scrollsToTop = false;
-        scrollView.delegate = self;
+        // height is magic number which match offset y, I do not know why....
+        scrollView.contentSize = CGSize(width: width,
+                                        height: (self.scrollView.frame.height - self.scrollView.frame.origin.y))
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.scrollsToTop = false
+        scrollView.delegate = self
     }
 
     private func loadScrollViewWithPage(_ page : Int) {
         if (page >= COUNT_PAGE - 1 || page < 0) {
-            return;
+            return
         }
         
         // replace the placeholder if necessary
@@ -102,15 +104,15 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         // add the controller's view to the scroll view
         if (controller.view.superview == nil)
         {
-            var frame = self.scrollView.frame;
+            var frame = self.scrollView.frame
             
-            let videoViewWidth = frame.size.width;
-            frame.origin.x = (videoViewWidth) * CGFloat(page);
-            frame.origin.y = -self.scrollView.frame.origin.y;
-            frame.size.width = videoViewWidth;
-            frame.size.height = frame.size.height;
-            //frame.size.height = frame.size.height * 0.8;
-            controller.view.frame = frame;
+            let videoViewWidth = frame.size.width
+            frame.origin.x = (videoViewWidth) * CGFloat(page)
+            frame.origin.y = -self.scrollView.frame.origin.y / 2
+            frame.size.width = videoViewWidth
+            frame.size.height = frame.size.height
+            
+            controller.view.frame = frame
             addChildViewController(controller)
             scrollView.addSubview(controller.view)
             controller.didMove(toParentViewController: self)
