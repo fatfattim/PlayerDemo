@@ -244,8 +244,6 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     // MARK: - IBActions
     
     @IBAction func playPauseButtonWasPressed(_ sender: UIButton) {
-        print(player.status)
-        
         if player.rate != 1.0 {
             // Not playing forward, so play.
             if currentTime == duration {
@@ -263,7 +261,6 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func rewindButtonWasPressed(_ sender: UIButton) {
             // Rewind no faster than -2.0.
-        print("rewindButtonWasPressed")
         rate = max(player.rate - 2.0, -2.0)
     }
     
@@ -355,6 +352,10 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             
             if newStatus == .failed {
                 handleErrorWithMessage(player.currentItem?.error?.localizedDescription, error:player.currentItem?.error)
+            }
+            
+            if (newStatus == .readyToPlay) {
+                player.play()
             }
         }
     }
