@@ -8,14 +8,33 @@
 
 import UIKit
 
+// Item Url : http://linear.demo.kkstream.tv/ch1.m3u8
+
 class ZappingViewController: UIViewController , UINavigationControllerDelegate , UIScrollViewDelegate {
     let COUNT_PAGE = 6
     var viewControllers: NSMutableArray = []
+    var currentPage = 0
 
     @IBOutlet weak var scrollView: UIScrollView!
     // MARK: - UINavigationControllerDelegate method
     public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
         return [UIInterfaceOrientationMask.landscapeLeft , UIInterfaceOrientationMask.landscapeRight]
+    }
+    
+    // MARK: - UIScrollViewDelegate method
+    // At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // switch the indicator when more than 50% of the previous/next page is visible
+        let pageWidth = scrollView.frame.width;
+        currentPage = Int(floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + CGFloat(1));
+        
+        // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
+        
+        loadScrollViewWithPage(currentPage - 1)
+        loadScrollViewWithPage(currentPage)
+        loadScrollViewWithPage(currentPage + 1)
+    
+        // a possible optimization would be to unload the views+controllers which are no longer visible
     }
     
     private func setOrientation() {
@@ -38,7 +57,7 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
     override func viewDidAppear(_ animated : Bool) {
         super.viewDidAppear(animated)
         viewDidLoadForPager()
-        loadScrollViewWithPage(page: 0)
+        loadScrollViewWithPage(0)
     }
     
     private func viewDidLoadForPager() {
@@ -65,8 +84,8 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         scrollView.delegate = self;
     }
 
-    private func loadScrollViewWithPage(page : Int) {
-        if (page >= COUNT_PAGE) {
+    private func loadScrollViewWithPage(_ page : Int) {
+        if (page >= COUNT_PAGE - 1 || page < 0) {
             return;
         }
         
