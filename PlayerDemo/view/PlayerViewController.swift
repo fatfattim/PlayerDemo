@@ -16,7 +16,9 @@ import UIKit
 	classes in its class hierarchy.
  */
 private var playerViewControllerKVOContext = 0
-
+// Item Url : 
+// http://linear.demo.kkstream.tv/ch1.m3u8
+// http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8
 class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     
     // MARK: - IBOutlets
@@ -151,7 +153,9 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         playerView.playerLayer.player = player
         
         let movieURL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
-        asset = AVURLAsset(url: movieURL, options: nil)
+        let fileURL = URL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8")
+        
+        asset = AVURLAsset(url: fileURL!, options: nil)
         
         // Make sure we don't have a strong reference cycle by only capturing self as weak.
         let interval = CMTimeMake(1, 1)

@@ -21,16 +21,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nyk-sc-MVf">
-                    <rect key="frame" x="120" y="60" width="427" height="255"/>
-                    <color key="backgroundColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="47" y="40" width="573" height="295"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Nyk-sc-MVf" secondAttribute="bottom" constant="60" id="6NS-Qf-zSC"/>
-                <constraint firstItem="Nyk-sc-MVf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="120" id="7EF-uj-yWk"/>
+                <constraint firstItem="Nyk-sc-MVf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1iQ-Vb-90M"/>
+                <constraint firstAttribute="bottom" secondItem="Nyk-sc-MVf" secondAttribute="bottom" constant="40" id="6NS-Qf-zSC"/>
                 <constraint firstItem="Nyk-sc-MVf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JFQ-94-Fcg"/>
-                <constraint firstItem="Nyk-sc-MVf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="Wzt-qK-QAd"/>
+                <constraint firstAttribute="trailing" secondItem="Nyk-sc-MVf" secondAttribute="trailing" constant="47" id="SJ2-9j-Eb8"/>
+                <constraint firstItem="Nyk-sc-MVf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="Wzt-qK-QAd"/>
             </constraints>
             <point key="canvasLocation" x="35.5" y="73.5"/>
         </view>
