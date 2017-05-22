@@ -30,13 +30,14 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var fastForwardButton: UIButton!
     @IBOutlet weak var playerView: PlayerView!
 
+    private var fileUrl : URL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
     // UINavigationControllerDelegate method
     public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
         return [UIInterfaceOrientationMask.landscapeLeft , UIInterfaceOrientationMask.landscapeRight]
     }
 
-    public func setURL() {
-        print("set url")
+    public func setURL(url : URL) {
+        fileUrl = url
     }
     
     private func setOrientation() {
@@ -152,10 +153,10 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         
         playerView.playerLayer.player = player
         
-        let movieURL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
-        let fileURL = URL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8")
+        //let movieURL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
+        //let fileURL = URL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8")
         
-        asset = AVURLAsset(url: fileURL!, options: nil)
+        asset = AVURLAsset(url: fileUrl, options: nil)
         
         // Make sure we don't have a strong reference cycle by only capturing self as weak.
         let interval = CMTimeMake(1, 1)

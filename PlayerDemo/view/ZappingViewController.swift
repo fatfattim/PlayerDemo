@@ -95,15 +95,24 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         let controller : PlayerViewController
         if viewControllers[page] is String {
             controller = PlayerViewController()
-            controller.setURL()
+            
+            let urlIndex = page % 3
+            
+            if (urlIndex == 0) {
+                controller.setURL(url: URL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8")!)
+            } else if (urlIndex == 1) {
+                controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/ch1.m3u8")!)
+            } else {
+                controller.setURL(url : Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!)
+            }
+            
             viewControllers.replaceObject(at: page, with: controller)
         } else {
             controller = viewControllers[page] as! PlayerViewController
         }
         
         // add the controller's view to the scroll view
-        if (controller.view.superview == nil)
-        {
+        if (controller.view.superview == nil) {
             var frame = self.scrollView.frame
             
             let videoViewWidth = frame.size.width
