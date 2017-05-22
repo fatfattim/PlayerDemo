@@ -11,6 +11,8 @@ import UIKit
 class RootViewController: UIViewController {
 
     @IBOutlet weak var naviPlayerBtn: UIButton!
+    @IBOutlet weak var zappingBtn: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -23,7 +25,8 @@ class RootViewController: UIViewController {
         backItem.title = NSLocalizedString("Back", comment: "Previous page")
         self.navigationItem.backBarButtonItem = backItem
         
-        naviPlayerBtn.setTitle(NSLocalizedString("Enter Player Page", comment: "Previous page"), for: UIControlState.normal)
+        naviPlayerBtn.setTitle(NSLocalizedString("Enter Player Page", comment: "Player page"), for: UIControlState.normal)
+        zappingBtn.setTitle(NSLocalizedString("Enter Zapping Page", comment: "Zapping page"), for: UIControlState.normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,12 +34,18 @@ class RootViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func touchUpInsidePlayerBtn(_ sender: Any) {
-        print("touch player button")
+    @IBAction func touchUpInsideZappingBtn(_ sender: Any) {
         
-        let playerVC = PlayerViewController()
-        playerVC.title = NSLocalizedString("Player", comment: "Player Title")
-        self.navigationController?.pushViewController(playerVC, animated: true)
+        let vc = ZappingViewController()
+        vc.title = NSLocalizedString("Zapping", comment: "Zapping Title")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    @IBAction func touchUpInsidePlayerBtn(_ sender: Any) {
+        
+        let vc = PlayerViewController()
+        vc.title = NSLocalizedString("Player", comment: "Player Title")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     /*
     // MARK: - Navigation
