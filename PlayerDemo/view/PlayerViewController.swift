@@ -33,6 +33,10 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         return [UIInterfaceOrientationMask.landscapeLeft , UIInterfaceOrientationMask.landscapeRight]
     }
 
+    public func setURL() {
+        print("set url")
+    }
+    
     private func setOrientation() {
         self.navigationController?.delegate = self
         if (UIApplication.shared.statusBarOrientation.isPortrait) {

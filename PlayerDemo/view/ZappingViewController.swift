@@ -38,6 +38,7 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
     override func viewDidAppear(_ animated : Bool) {
         super.viewDidAppear(animated)
         viewDidLoadForPager()
+        loadScrollViewWithPage(page: 0)
     }
     
     private func viewDidLoadForPager() {
@@ -45,8 +46,7 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         // view controllers are created lazily
         // in the meantime, load the array with placeholders which will be replaced on demand
         let controllers: NSMutableArray = [];
-        for index in 1...COUNT_PAGE {
-            print("\(index) times 5 is \(index * 5)")
+        for _ in 1...COUNT_PAGE {
             controllers.add("")
         }
         self.viewControllers = controllers;
@@ -63,5 +63,45 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         scrollView.showsVerticalScrollIndicator = false;
         scrollView.scrollsToTop = false;
         scrollView.delegate = self;
+    }
+
+    private func loadScrollViewWithPage(page : Int) {
+        if (page >= COUNT_PAGE) {
+            return;
+        }
+        
+        // replace the placeholder if necessary
+        let controller : PlayerViewController
+        if viewControllers[page] is String {
+            controller = PlayerViewController()
+            controller.setURL()
+            viewControllers.replaceObject(at: page, with: controller)
+        } else {
+            controller = viewControllers[page] as! PlayerViewController
+        }
+        
+        // add the controller's view to the scroll view
+        if (controller.view.superview == nil)
+        {
+            var frame = self.scrollView.frame;
+            
+            let videoViewWidth = frame.size.width;
+            frame.origin.x = (videoViewWidth) * CGFloat(page);
+            frame.origin.y = -self.scrollView.frame.origin.y;
+            frame.size.width = videoViewWidth;
+            frame.size.height = frame.size.height;
+            //frame.size.height = frame.size.height * 0.8;
+            controller.view.frame = frame;
+            addChildViewController(controller)
+            scrollView.addSubview(controller.view)
+            controller.didMove(toParentViewController: self)
+            
+        }
+        
+        if(page % 2 == 1) { //testing codes
+            controller.view.backgroundColor = UIColor.red
+        } else {
+            controller.view.backgroundColor = UIColor.blue
+        }
     }
 }
