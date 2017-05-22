@@ -29,6 +29,8 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var fastForwardButton: UIButton!
     @IBOutlet weak var playerView: PlayerView!
+    
+    let player = AVPlayer()
 
     private var fileUrl : URL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
     // UINavigationControllerDelegate method
@@ -48,10 +50,19 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    private func hideButton() {
+        timeSlider.isHidden = true
+        startTimeLabel.isHidden = true
+        durationLabel.isHidden = true
+        rewindButton.isHidden = true
+        playPauseButton.isHidden = true
+        fastForwardButton.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setOrientation()
+        hideButton()
     }
     
     private func shouldAutorotate() -> Bool {
@@ -66,8 +77,6 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         "playable",
         "hasProtectedContent"
     ]
-    
-    let player = AVPlayer()
     
     var currentTime: Double {
         get {
@@ -151,6 +160,13 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         addObserver(self, forKeyPath: #keyPath(PlayerViewController.player.rate), options: [.new, .initial], context: &playerViewControllerKVOContext)
         addObserver(self, forKeyPath: #keyPath(PlayerViewController.player.currentItem.status), options: [.new, .initial], context: &playerViewControllerKVOContext)
         
+        //addObserver(self, forKeyPath: #selector("moviePlayBackFinished:"), options: .AVPlayerItemDidPlayToEndTimeNotification, context: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.moviePlayBackFinished),
+            name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
+            object: player.currentItem)
         playerView.playerLayer.player = player
         
         //let movieURL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
@@ -168,6 +184,13 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    // Auto replay
+    func moviePlayBackFinished() {
+        let newTime = CMTimeMakeWithSeconds(0, 1)
+        player.seek(to: newTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+        player.play()
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -181,6 +204,7 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         removeObserver(self, forKeyPath: #keyPath(PlayerViewController.player.currentItem.duration), context: &playerViewControllerKVOContext)
         removeObserver(self, forKeyPath: #keyPath(PlayerViewController.player.rate), context: &playerViewControllerKVOContext)
         removeObserver(self, forKeyPath: #keyPath(PlayerViewController.player.currentItem.status), context: &playerViewControllerKVOContext)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Asset Loading
