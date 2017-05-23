@@ -76,10 +76,37 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         playPauseButton.isHidden = true
         fastForwardButton.isHidden = true
     }
+
+    private func setPanGesture() {
+        let pan = UIPanGestureRecognizer(
+            target:self,
+            action:#selector(self.pan))
+        pan.minimumNumberOfTouches = 1
+        pan.maximumNumberOfTouches = 1
+        view.addGestureRecognizer(pan)
+    }
     
+    func pan(recognizer:UIPanGestureRecognizer) {
+        let traslation = recognizer.translation(in: self.view)
+        
+        switch recognizer.state {
+        case UIGestureRecognizerState.began:
+            print("began")
+        case UIGestureRecognizerState.changed:
+            print("changed")
+        case UIGestureRecognizerState.ended:
+            print("end")
+        default:
+            print("other")
+        }
+    
+        print("traslation x position :" , traslation.x)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setOrientation()
+        setPanGesture()
         hideButton()
     }
     
