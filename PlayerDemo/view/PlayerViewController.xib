@@ -70,7 +70,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kz-fn-VEu">
-                            <rect key="frame" x="154" y="58" width="325" height="51"/>
+                            <rect key="frame" x="280.5" y="58" width="72.5" height="36"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <nil key="textColor"/>
@@ -81,9 +81,7 @@
                         <constraint firstItem="PGV-i1-ch4" firstAttribute="baseline" secondItem="OcU-Xv-2ya" secondAttribute="baseline" id="7mC-jm-vra"/>
                         <constraint firstItem="tor-UB-Npc" firstAttribute="top" secondItem="OcU-Xv-2ya" secondAttribute="bottom" constant="7" id="AFS-CT-76k"/>
                         <constraint firstItem="unO-Zg-QtX" firstAttribute="centerY" secondItem="Z8r-dq-j2i" secondAttribute="centerY" id="CZC-3L-dfH"/>
-                        <constraint firstItem="unO-Zg-QtX" firstAttribute="top" secondItem="7kz-fn-VEu" secondAttribute="bottom" constant="54" id="GFj-dK-9Cn"/>
                         <constraint firstItem="7kz-fn-VEu" firstAttribute="top" secondItem="Z8r-dq-j2i" secondAttribute="top" constant="58" id="Sn7-Ls-NOZ"/>
-                        <constraint firstItem="7kz-fn-VEu" firstAttribute="leading" secondItem="unO-Zg-QtX" secondAttribute="leading" id="VFY-Mh-Gpy"/>
                         <constraint firstAttribute="bottom" secondItem="tor-UB-Npc" secondAttribute="bottom" id="Xf9-PV-cdX"/>
                         <constraint firstItem="7kz-fn-VEu" firstAttribute="centerX" secondItem="Z8r-dq-j2i" secondAttribute="centerX" id="Y0M-nv-iie"/>
                         <constraint firstItem="PGV-i1-ch4" firstAttribute="trailing" secondItem="Z8r-dq-j2i" secondAttribute="trailingMargin" id="YCS-Uy-TCC"/>
