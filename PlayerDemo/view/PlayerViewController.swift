@@ -21,6 +21,7 @@ private var playerViewControllerKVOContext = 0
 // http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8
 class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     
+    @IBOutlet weak var seekInfoLabel: UILabel!
     // MARK: - IBOutlets
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var startTimeLabel: UILabel!
@@ -29,7 +30,8 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var fastForwardButton: UIButton!
     @IBOutlet weak var playerView: PlayerView!
-    
+
+    var _currentTime : CMTime!
     let player = AVPlayer()
 
     private var fileUrl : URL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
@@ -90,14 +92,18 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         let traslation = recognizer.translation(in: self.view)
         
         switch recognizer.state {
-        case UIGestureRecognizerState.began:
-            print("began")
-        case UIGestureRecognizerState.changed:
-            print("changed")
-        case UIGestureRecognizerState.ended:
-            print("end")
-        default:
-            print("other")
+            case UIGestureRecognizerState.began:
+                print("began")
+                _currentTime = self.player.currentTime()
+            case UIGestureRecognizerState.changed:
+                let time = reviseTime(CMTimeGetSeconds(_currentTime) + Float64(traslation.x / 10))
+                
+                self.seekInfoLabel.text = self.createTimeString(time: Float(time))
+            case UIGestureRecognizerState.ended:
+                print("end")
+                currentTime = CMTimeGetSeconds(_currentTime) + Float64(traslation.x / 10)
+            default: break
+            
         }
     
         print("traslation x position :" , traslation.x)
@@ -128,8 +134,18 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             return CMTimeGetSeconds(player.currentTime())
         }
         set {
-            let newTime = CMTimeMakeWithSeconds(newValue, 1)
+            let newTime = CMTimeMakeWithSeconds(reviseTime(newValue), 1)
             player.seek(to: newTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+        }
+    }
+    
+    private func reviseTime(_ newValue :Double) -> Float64 {
+        if(newValue < 0) {
+            return 0
+        } else if (newValue >= CMTimeGetSeconds((self.player.currentItem?.duration)!)) {
+            return CMTimeGetSeconds((self.player.currentItem?.duration)!)
+        } else {
+            return newValue
         }
     }
     

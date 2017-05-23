@@ -18,6 +18,7 @@
                 <outlet property="playPauseButton" destination="ms2-zX-STR" id="RbM-et-AR4"/>
                 <outlet property="playerView" destination="Z8r-dq-j2i" id="NGc-um-3Kb"/>
                 <outlet property="rewindButton" destination="unO-Zg-QtX" id="nfv-b5-X2R"/>
+                <outlet property="seekInfoLabel" destination="7kz-fn-VEu" id="gBD-ps-L58"/>
                 <outlet property="startTimeLabel" destination="OcU-Xv-2ya" id="E0z-vw-EHF"/>
                 <outlet property="timeSlider" destination="tor-UB-Npc" id="mey-38-cH5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -29,7 +30,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z8r-dq-j2i" customClass="PlayerView" customModule="PlayerDemo" customModuleProvider="target">
-                    <rect key="frame" x="17" y="-0.5" width="634" height="375"/>
+                    <rect key="frame" x="17" y="0.0" width="634" height="375"/>
                     <subviews>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tor-UB-Npc">
                             <rect key="frame" x="6" y="345" width="630" height="31"/>
@@ -58,7 +59,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unO-Zg-QtX">
-                            <rect key="frame" x="154" y="162.5" width="50" height="50"/>
+                            <rect key="frame" x="154" y="163" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="XoD-J0-dcV"/>
                                 <constraint firstAttribute="height" constant="50" id="yab-ge-Trb"/>
@@ -68,12 +69,23 @@
                                 <action selector="rewindButtonWasPressed:" destination="-1" eventType="touchUpInside" id="u8K-ON-7hk"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kz-fn-VEu">
+                            <rect key="frame" x="154" y="58" width="325" height="51"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <constraints>
                         <constraint firstItem="PGV-i1-ch4" firstAttribute="baseline" secondItem="OcU-Xv-2ya" secondAttribute="baseline" id="7mC-jm-vra"/>
                         <constraint firstItem="tor-UB-Npc" firstAttribute="top" secondItem="OcU-Xv-2ya" secondAttribute="bottom" constant="7" id="AFS-CT-76k"/>
                         <constraint firstItem="unO-Zg-QtX" firstAttribute="centerY" secondItem="Z8r-dq-j2i" secondAttribute="centerY" id="CZC-3L-dfH"/>
+                        <constraint firstItem="unO-Zg-QtX" firstAttribute="top" secondItem="7kz-fn-VEu" secondAttribute="bottom" constant="54" id="GFj-dK-9Cn"/>
+                        <constraint firstItem="7kz-fn-VEu" firstAttribute="top" secondItem="Z8r-dq-j2i" secondAttribute="top" constant="58" id="Sn7-Ls-NOZ"/>
+                        <constraint firstItem="7kz-fn-VEu" firstAttribute="leading" secondItem="unO-Zg-QtX" secondAttribute="leading" id="VFY-Mh-Gpy"/>
                         <constraint firstAttribute="bottom" secondItem="tor-UB-Npc" secondAttribute="bottom" id="Xf9-PV-cdX"/>
+                        <constraint firstItem="7kz-fn-VEu" firstAttribute="centerX" secondItem="Z8r-dq-j2i" secondAttribute="centerX" id="Y0M-nv-iie"/>
                         <constraint firstItem="PGV-i1-ch4" firstAttribute="trailing" secondItem="Z8r-dq-j2i" secondAttribute="trailingMargin" id="YCS-Uy-TCC"/>
                         <constraint firstAttribute="trailing" secondItem="tor-UB-Npc" secondAttribute="trailing" id="YQX-ou-YXq"/>
                         <constraint firstItem="OcU-Xv-2ya" firstAttribute="leading" secondItem="tor-UB-Npc" secondAttribute="leading" id="a25-W6-4vl"/>
@@ -81,7 +93,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ms2-zX-STR">
-                    <rect key="frame" x="309" y="162" width="50" height="50"/>
+                    <rect key="frame" x="309" y="163" width="50" height="50"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.3084867294520548" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="0nZ-FC-qyP"/>
@@ -93,7 +105,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxq-Gh-WL3">
-                    <rect key="frame" x="444" y="176" width="50" height="22"/>
+                    <rect key="frame" x="444" y="177" width="50" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="0xA-Yj-oVH"/>
                     </constraints>
