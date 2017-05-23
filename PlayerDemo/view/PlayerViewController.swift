@@ -178,8 +178,6 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         addObserver(self, forKeyPath: #keyPath(PlayerViewController.player.rate), options: [.new, .initial], context: &playerViewControllerKVOContext)
         addObserver(self, forKeyPath: #keyPath(PlayerViewController.player.currentItem.status), options: [.new, .initial], context: &playerViewControllerKVOContext)
         
-        //addObserver(self, forKeyPath: #selector("moviePlayBackFinished:"), options: .AVPlayerItemDidPlayToEndTimeNotification, context: nil)
-        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.moviePlayBackFinished),
@@ -203,10 +201,12 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     // Auto replay
-    func moviePlayBackFinished() {
-        let newTime = CMTimeMakeWithSeconds(0, 1)
-        player.seek(to: newTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
-        player.play()
+    func moviePlayBackFinished(notification: Notification) {
+       if((notification.object! as! AVPlayerItem) == player.currentItem) {
+            let newTime = CMTimeMakeWithSeconds(0, 1)
+            player.seek(to: newTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+            player.play()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
