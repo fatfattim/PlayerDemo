@@ -127,5 +127,11 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
             controller.didMove(toParentViewController: self)
             
         }
+        
+        if(currentPage == page) {
+            controller.isShow = true
+        } else {
+            controller.isShow = false
+        }
     }
 }

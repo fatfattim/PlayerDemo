@@ -50,6 +50,24 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    // Mark https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Properties.html
+    // Properties practice
+    private var _isShow : Bool = false
+    var isShow: Bool {
+        get {
+            return _isShow
+        }
+        set(bool) {
+            _isShow = bool
+            
+            if(_isShow) {
+                player.isMuted = false
+            } else {
+                player.isMuted = true
+            }
+        }
+    }
+    
     private func hideButton() {
         timeSlider.isHidden = true
         startTimeLabel.isHidden = true
