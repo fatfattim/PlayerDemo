@@ -85,7 +85,9 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             action:#selector(self.pan))
         pan.minimumNumberOfTouches = 1
         pan.maximumNumberOfTouches = 1
-        view.addGestureRecognizer(pan)
+        //view.addGestureRecognizer(pan)
+        seekInfoLabel.isUserInteractionEnabled = true
+        seekInfoLabel.addGestureRecognizer(pan)
     }
     
     func pan(recognizer:UIPanGestureRecognizer) {
