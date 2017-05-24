@@ -16,7 +16,6 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("touch viewDidLoad")
         setLocalization()
     }
 
@@ -24,7 +23,7 @@ class RootViewController: UIViewController {
         let backItem = UIBarButtonItem()
         backItem.title = NSLocalizedString("Back", comment: "Previous page")
         self.navigationItem.backBarButtonItem = backItem
-        
+        self.title = NSLocalizedString("Demo", comment: "Player page")
         naviPlayerBtn.setTitle(NSLocalizedString("Enter Player Page", comment: "Player page"), for: UIControlState.normal)
         zappingBtn.setTitle(NSLocalizedString("Enter Zapping Page", comment: "Zapping page"), for: UIControlState.normal)
     }
