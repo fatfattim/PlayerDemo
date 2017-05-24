@@ -97,14 +97,14 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         
         switch recognizer.state {
             case UIGestureRecognizerState.began:
-                print("began")
+                seekInfoLabel.textColor = UIColor.red
                 _currentTime = self.player.currentTime()
             case UIGestureRecognizerState.changed:
                 let time = reviseTime(CMTimeGetSeconds(_currentTime) + Float64(traslation.x / 10))
                 
                 self.seekInfoLabel.text = self.createTimeString(time: Float(time))
             case UIGestureRecognizerState.ended:
-                print("end")
+                seekInfoLabel.textColor = UIColor.clear
                 currentTime = CMTimeGetSeconds(_currentTime) + Float64(traslation.x / 10)
             default: break
             

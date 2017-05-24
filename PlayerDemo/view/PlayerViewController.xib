@@ -70,9 +70,9 @@
                                 <action selector="rewindButtonWasPressed:" destination="-1" eventType="touchUpInside" id="u8K-ON-7hk"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kz-fn-VEu">
-                            <rect key="frame" x="0.0" y="10" width="634" height="60"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pan here ! ! !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kz-fn-VEu">
+                            <rect key="frame" x="0.0" y="0.0" width="634" height="60"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.1033550941780822" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="bDc-bk-Exg"/>
                             </constraints>
@@ -105,7 +105,7 @@
                         <constraint firstItem="7kz-fn-VEu" firstAttribute="width" secondItem="Z8r-dq-j2i" secondAttribute="width" id="a5Y-b9-1gu"/>
                         <constraint firstItem="tor-UB-Npc" firstAttribute="leading" secondItem="Z8r-dq-j2i" secondAttribute="leadingMargin" id="f1j-eu-sdc"/>
                         <constraint firstItem="9XM-Ps-E6b" firstAttribute="centerX" secondItem="Z8r-dq-j2i" secondAttribute="centerX" id="rNY-hz-PUI"/>
-                        <constraint firstItem="7kz-fn-VEu" firstAttribute="top" secondItem="Z8r-dq-j2i" secondAttribute="top" constant="10" id="s7N-uB-7up"/>
+                        <constraint firstItem="7kz-fn-VEu" firstAttribute="top" secondItem="Z8r-dq-j2i" secondAttribute="top" id="s7N-uB-7up"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ms2-zX-STR">
