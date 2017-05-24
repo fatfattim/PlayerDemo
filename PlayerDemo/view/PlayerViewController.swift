@@ -30,18 +30,20 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var fastForwardButton: UIButton!
     @IBOutlet weak var playerView: PlayerView!
+    @IBOutlet weak var debugLabel: UILabel!
 
     var _currentTime : CMTime!
     let player = AVPlayer()
-
+    var debugText = ""
     private var fileUrl : URL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
     // UINavigationControllerDelegate method
     public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
         return [UIInterfaceOrientationMask.landscapeLeft , UIInterfaceOrientationMask.landscapeRight]
     }
 
-    public func setURL(url : URL) {
+    public func setURL(url : URL, describe : String) {
         fileUrl = url
+        debugText = describe
     }
     
     private func setOrientation() {
@@ -116,6 +118,8 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         setOrientation()
         setPanGesture()
         hideButton()
+        
+        debugLabel.text = debugText
     }
     
     private func shouldAutorotate() -> Bool {

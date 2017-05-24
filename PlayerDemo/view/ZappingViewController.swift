@@ -99,11 +99,11 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
             let urlIndex = page % 3
             
             if (urlIndex == 0) {
-                controller.setURL(url: URL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8")!)
+                controller.setURL(url: URL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8")!, describe : "apple demo m3u8")
             } else if (urlIndex == 1) {
-                controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/ch1.m3u8")!)
+                controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/ch1.m3u8")!, describe : "Live")
             } else {
-                controller.setURL(url : Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!)
+                controller.setURL(url : Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!, describe : "Local file")
             }
             
             viewControllers.replaceObject(at: page, with: controller)
