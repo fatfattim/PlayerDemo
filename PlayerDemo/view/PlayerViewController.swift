@@ -31,7 +31,7 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var fastForwardButton: UIButton!
     @IBOutlet weak var playerView: PlayerView!
     @IBOutlet weak var debugLabel: UILabel!
-
+    
     var _currentTime : CMTime!
     let player = AVPlayer()
     var debugText = ""
@@ -109,8 +109,6 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             default: break
             
         }
-    
-        print("traslation x position :" , traslation.x)
     }
 
     override func viewDidLoad() {
@@ -232,10 +230,8 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             selector: #selector(self.moviePlayBackFinished),
             name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
             object: player.currentItem)
-        playerView.playerLayer.player = player
         
-        //let movieURL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
-        //let fileURL = URL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8")
+        playerView.playerLayer.player = player
         
         asset = AVURLAsset(url: fileUrl, options: nil)
         
@@ -249,6 +245,9 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    
+    
+    
     // Auto replay
     func moviePlayBackFinished(notification: Notification) {
        if((notification.object! as! AVPlayerItem) == player.currentItem) {
@@ -256,6 +255,32 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             player.seek(to: newTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
             player.play()
         }
+    }
+    
+    
+    func getBufferTime1() {
+        
+        var loadedTimeRanges = self.player.currentItem?.loadedTimeRanges
+        
+        if(loadedTimeRanges != nil && !(loadedTimeRanges?.isEmpty)!) {
+            let timeRange = loadedTimeRanges?[0].timeRangeValue
+            let startSeconds = CMTimeGetSeconds((timeRange?.start)!)
+            let durationSeconds = CMTimeGetSeconds((timeRange?.duration)!)
+            let result = startSeconds + durationSeconds
+            print(result)
+        }
+    }
+    
+    func getBufferTime() {
+        let time : CMTime
+        
+        if let range = self.player.currentItem?.loadedTimeRanges.first {
+            time = CMTimeRangeGetEnd(range.timeRangeValue)
+        } else {
+            time = kCMTimeZero
+        }
+        
+        print(CMTimeShow(time))
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -328,6 +353,12 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
                  it our player's current item.
                  */
                 self.playerItem = AVPlayerItem(asset: newAsset)
+                
+                /*self.playerItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options:[.new, .initial], context:&playerViewControllerKVOContext);
+                self.playerItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options:[.new, .initial], context:&playerViewControllerKVOContext);
+                
+                self.playerItem?.addObserver(self, forKeyPath: "loadedTimeRanges", options:[.new, .initial], context:&playerViewControllerKVOContext);*/
+                
             }
         }
     }
@@ -368,6 +399,8 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     
     // Update our UI when player or `player.currentItem` changes.
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        
+        
         // Make sure the this KVO callback was intended for this view controller.
         guard context == &playerViewControllerKVOContext else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
@@ -448,6 +481,17 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             if (newStatus == .readyToPlay) {
                 player.play()
             }
+
+        } else if (object as? AVPlayerItem == playerItem && keyPath == "loadedTimeRanges") {
+            let time : CMTime
+
+            if let range = self.player.currentItem?.loadedTimeRanges.first {
+                time = CMTimeRangeGetEnd(range.timeRangeValue)
+            } else {
+                time = kCMTimeZero
+            }
+            
+            //print(CMTimeShow(time))
         }
     }
     
