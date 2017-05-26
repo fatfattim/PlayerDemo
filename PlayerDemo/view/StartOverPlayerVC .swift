@@ -86,9 +86,13 @@ class StartOverPlayerVC: PlayerViewController {
     }
     
     func timerAction() {
-        if(getInitTime() == 0) {
+        let seekTime = getInitTime()
+        if(seekTime == 0) {
             fileUrl = programUrl
             asset = AVURLAsset(url: fileUrl, options: nil)
+        } else {
+            timeSlider.maximumValue = Float(seekTime)
+            durationLabel.text = createTimeString(time: Float(seekTime))
         }
     }
 }
