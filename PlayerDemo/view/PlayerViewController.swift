@@ -479,7 +479,7 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             }
             
             if (newStatus == .readyToPlay) {
-                player.play()
+                readyToPlay()
             }
 
         } else if (object as? AVPlayerItem == playerItem && keyPath == "loadedTimeRanges") {
@@ -493,6 +493,11 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             
             //print(CMTimeShow(time))
         }
+    }
+    
+    
+    func readyToPlay() {
+        player.play()
     }
     
     // Trigger KVO for anyone observing our properties affected by player and player.currentItem

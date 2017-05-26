@@ -19,7 +19,7 @@ class StartOverPlayerVC: PlayerViewController {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)   {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.setURL(url: advertiseUrl, describe : "none")
+        self.setURL(url: programUrl, describe : "none")
         print("init nibName style")
     }
     
@@ -55,16 +55,38 @@ class StartOverPlayerVC: PlayerViewController {
         }
     }
     
-    func timerAction() {
+    override func readyToPlay() {
+        if(fileUrl != advertiseUrl) {
+            let seekTime = getInitTime()
+            
+            if (Double(seekTime) >= (player.currentItem?.duration.seconds)!) {
+                fileUrl = advertiseUrl
+                asset = AVURLAsset(url: fileUrl, options: nil)
+            } else {
+                let newTime = CMTimeMakeWithSeconds(Float64(seekTime), 1)
+                player.seek(to: newTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+                player.play()
+            }
+        } else {
+            super.readyToPlay()
+        }
+    }
+    
+    func getInitTime() -> Int {
         let date = Date()
         let calendar = Calendar.current
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
-        
+        print("seconds ", seconds)
         let intervalTime = 60 * 15
         
         let currentTime = minutes * 60 + seconds
-        if((currentTime % intervalTime) == 0) {
+        
+        return (currentTime % intervalTime)
+    }
+    
+    func timerAction() {
+        if(getInitTime() == 0) {
             fileUrl = programUrl
             asset = AVURLAsset(url: fileUrl, options: nil)
         }
