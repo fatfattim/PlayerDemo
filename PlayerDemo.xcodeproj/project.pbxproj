@@ -93,11 +93,11 @@
 		18C170031ECDA71800AE86B8 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				18B2976E1ED8021C0026B209 /* StartOverPlayerVC .swift */,
-				18C170061ECE83B700AE86B8 /* RootViewController.swift */,
-				18C170071ECE83B700AE86B8 /* RootViewController.xib */,
 				1818D8411ECEA902007D4169 /* PlayerViewController.swift */,
 				1818D8421ECEA902007D4169 /* PlayerViewController.xib */,
+				18C170061ECE83B700AE86B8 /* RootViewController.swift */,
+				18C170071ECE83B700AE86B8 /* RootViewController.xib */,
+				18B2976E1ED8021C0026B209 /* StartOverPlayerVC .swift */,
 				187AA3471ED286030023A2BF /* ZappingViewController.swift */,
 				187AA3481ED286030023A2BF /* ZappingViewController.xib */,
 			);
