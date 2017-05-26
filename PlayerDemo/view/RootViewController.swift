@@ -12,6 +12,7 @@ class RootViewController: UIViewController {
 
     @IBOutlet weak var naviPlayerBtn: UIButton!
     @IBOutlet weak var zappingBtn: UIButton!
+    @IBOutlet weak var startOverBtn: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class RootViewController: UIViewController {
         self.title = NSLocalizedString("Demo", comment: "Player page")
         naviPlayerBtn.setTitle(NSLocalizedString("Enter Player Page", comment: "Player page"), for: UIControlState.normal)
         zappingBtn.setTitle(NSLocalizedString("Enter Zapping Page", comment: "Zapping page"), for: UIControlState.normal)
+        startOverBtn.setTitle(NSLocalizedString("Start Over Page", comment: "Start Over Page"), for: UIControlState.normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,25 +37,24 @@ class RootViewController: UIViewController {
 
     @IBAction func touchUpInsideZappingBtn(_ sender: Any) {
         
-        let vc = ZappingViewController()
+        let vc = ZappingViewController() //change this to your class name
+
         vc.title = NSLocalizedString("Zapping", comment: "Zapping Title")
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func touchUpInsidePlayerBtn(_ sender: Any) {
-        
+
         let vc = PlayerViewController()
         vc.title = NSLocalizedString("Player", comment: "Player Title")
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func touchUpInsideStartOverBtn(_ sender: Any) {
+        let vc = StartOverPlayerVC(nibName: "PlayerViewController", bundle: nil)
+        vc.title = NSLocalizedString("Start Over Page", comment: "StartOver Title")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    */
+    
 
 }
