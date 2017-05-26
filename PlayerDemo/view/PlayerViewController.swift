@@ -35,7 +35,7 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     var _currentTime : CMTime!
     let player = AVPlayer()
     var debugText = ""
-    private var fileUrl : URL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
+    var fileUrl : URL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
     // UINavigationControllerDelegate method
     public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
         return [UIInterfaceOrientationMask.landscapeLeft , UIInterfaceOrientationMask.landscapeRight]
