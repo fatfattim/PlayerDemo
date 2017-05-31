@@ -33,6 +33,8 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var debugLabel: UILabel!
     
     var _currentTime : CMTime!
+    var currentStatus: AVPlayerItemStatus!
+
     let player = AVPlayer()
     var debugText = ""
     var fileUrl : URL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
@@ -480,9 +482,12 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
                 handleErrorWithMessage(player.currentItem?.error?.localizedDescription, error:player.currentItem?.error)
             }
             
-            if (newStatus == .readyToPlay) {
+            if (newStatus == .readyToPlay && currentStatus != newStatus) {
                 readyToPlay()
             }
+            
+            currentStatus = newStatus
+            print("new status " , newStatus.rawValue)
 
         } else if (object as? AVPlayerItem == playerItem && keyPath == "loadedTimeRanges") {
             let time : CMTime
