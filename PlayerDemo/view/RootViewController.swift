@@ -51,7 +51,7 @@ class RootViewController: UIViewController {
     }
 
     @IBAction func touchUpInsideStartOverBtn(_ sender: Any) {
-        let vc = StartOverPlayerVC(nibName: "PlayerViewController", bundle: nil)
+        let vc = StartOverPlayerVCNew(nibName: "PlayerViewController", bundle: nil)
         vc.title = NSLocalizedString("Start Over Page", comment: "StartOver Title")
         self.navigationController?.pushViewController(vc, animated: true)
     }

@@ -427,9 +427,12 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             let newDurationSeconds = hasValidDuration ? CMTimeGetSeconds(newDuration) : 0.0
             let currentTime = hasValidDuration ? Float(CMTimeGetSeconds(player.currentTime())) : 0.0
             
-            timeSlider.maximumValue = Float(newDurationSeconds)
-            
-            timeSlider.value = currentTime
+            if(!skipSetSliderValue()) {
+                timeSlider.maximumValue = Float(newDurationSeconds)
+                timeSlider.value = currentTime
+                durationLabel.text = createTimeString(time: Float(newDurationSeconds))
+                startTimeLabel.text = createTimeString(time: currentTime)
+            }
             
             hasValidDuration = true
             
@@ -442,10 +445,9 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             timeSlider.isEnabled = hasValidDuration
             
             startTimeLabel.isEnabled = hasValidDuration
-            startTimeLabel.text = createTimeString(time: currentTime)
             
             durationLabel.isEnabled = hasValidDuration
-            durationLabel.text = createTimeString(time: Float(newDurationSeconds))
+           
         }
         else if keyPath == #keyPath(PlayerViewController.player.rate) {
             // Update `playPauseButton` image.
@@ -495,6 +497,10 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    
+    func skipSetSliderValue() -> Bool {
+        return false
+    }
     
     func readyToPlay() {
         player.play()

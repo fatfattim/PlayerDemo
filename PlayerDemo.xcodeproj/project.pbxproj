@@ -15,6 +15,7 @@
 		187AA3491ED286030023A2BF /* ZappingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AA3471ED286030023A2BF /* ZappingViewController.swift */; };
 		187AA34A1ED286030023A2BF /* ZappingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187AA3481ED286030023A2BF /* ZappingViewController.xib */; };
 		18B2976F1ED8021C0026B209 /* StartOverPlayerVC .swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B2976E1ED8021C0026B209 /* StartOverPlayerVC .swift */; };
+		18B934911EDE97FF002C9D42 /* StartOverPlayerVCNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B934901EDE97FF002C9D42 /* StartOverPlayerVCNew.swift */; };
 		18C16FF21ECD9F7B00AE86B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C16FF11ECD9F7B00AE86B8 /* AppDelegate.swift */; };
 		18C16FF91ECD9F7B00AE86B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C16FF81ECD9F7B00AE86B8 /* Assets.xcassets */; };
 		18C170081ECE83B700AE86B8 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C170061ECE83B700AE86B8 /* RootViewController.swift */; };
@@ -31,6 +32,7 @@
 		187AA3471ED286030023A2BF /* ZappingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZappingViewController.swift; sourceTree = "<group>"; };
 		187AA3481ED286030023A2BF /* ZappingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZappingViewController.xib; sourceTree = "<group>"; };
 		18B2976E1ED8021C0026B209 /* StartOverPlayerVC .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StartOverPlayerVC .swift"; sourceTree = "<group>"; };
+		18B934901EDE97FF002C9D42 /* StartOverPlayerVCNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartOverPlayerVCNew.swift; sourceTree = "<group>"; };
 		18C16FEE1ECD9F7B00AE86B8 /* PlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C16FF11ECD9F7B00AE86B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18C16FF81ECD9F7B00AE86B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				18C170061ECE83B700AE86B8 /* RootViewController.swift */,
 				18C170071ECE83B700AE86B8 /* RootViewController.xib */,
 				18B2976E1ED8021C0026B209 /* StartOverPlayerVC .swift */,
+				18B934901EDE97FF002C9D42 /* StartOverPlayerVCNew.swift */,
 				187AA3471ED286030023A2BF /* ZappingViewController.swift */,
 				187AA3481ED286030023A2BF /* ZappingViewController.xib */,
 			);
@@ -182,6 +185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B934911EDE97FF002C9D42 /* StartOverPlayerVCNew.swift in Sources */,
 				187AA3491ED286030023A2BF /* ZappingViewController.swift in Sources */,
 				18B2976F1ED8021C0026B209 /* StartOverPlayerVC .swift in Sources */,
 				18C16FF21ECD9F7B00AE86B8 /* AppDelegate.swift in Sources */,
