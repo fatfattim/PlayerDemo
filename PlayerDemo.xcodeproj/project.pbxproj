@@ -18,6 +18,7 @@
 		18B934911EDE97FF002C9D42 /* StartOverPlayerVCNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B934901EDE97FF002C9D42 /* StartOverPlayerVCNew.swift */; };
 		18B934991EDFB807002C9D42 /* PlayerDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B934981EDFB807002C9D42 /* PlayerDemoUITests.swift */; };
 		18B934A31EDFC497002C9D42 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1818D8501ECEDB9A007D4169 /* Localizable.strings */; };
+		18B934A91EE00BB8002C9D42 /* Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B934A81EE00BB8002C9D42 /* Subscript.swift */; };
 		18C16FF21ECD9F7B00AE86B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C16FF11ECD9F7B00AE86B8 /* AppDelegate.swift */; };
 		18C16FF91ECD9F7B00AE86B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C16FF81ECD9F7B00AE86B8 /* Assets.xcassets */; };
 		18C170081ECE83B700AE86B8 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C170061ECE83B700AE86B8 /* RootViewController.swift */; };
@@ -48,6 +49,7 @@
 		18B934961EDFB807002C9D42 /* PlayerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B934981EDFB807002C9D42 /* PlayerDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDemoUITests.swift; sourceTree = "<group>"; };
 		18B9349A1EDFB807002C9D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18B934A81EE00BB8002C9D42 /* Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscript.swift; sourceTree = "<group>"; };
 		18C16FEE1ECD9F7B00AE86B8 /* PlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C16FF11ECD9F7B00AE86B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18C16FF81ECD9F7B00AE86B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,6 +94,14 @@
 			path = PlayerDemoUITests;
 			sourceTree = "<group>";
 		};
+		18B934A71EE00BA0002C9D42 /* practice */ = {
+			isa = PBXGroup;
+			children = (
+				18B934A81EE00BB8002C9D42 /* Subscript.swift */,
+			);
+			path = practice;
+			sourceTree = "<group>";
+		};
 		18C16FE51ECD9F7B00AE86B8 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				1818D8601ED1D207007D4169 /* ElephantSeals.mov */,
+				18B934A71EE00BA0002C9D42 /* practice */,
 				1818D85B1ED18759007D4169 /* player */,
 				18C170031ECDA71800AE86B8 /* view */,
 				18C16FF11ECD9F7B00AE86B8 /* AppDelegate.swift */,
@@ -259,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B934911EDE97FF002C9D42 /* StartOverPlayerVCNew.swift in Sources */,
+				18B934A91EE00BB8002C9D42 /* Subscript.swift in Sources */,
 				187AA3491ED286030023A2BF /* ZappingViewController.swift in Sources */,
 				18B2976F1ED8021C0026B209 /* StartOverPlayerVC .swift in Sources */,
 				18C16FF21ECD9F7B00AE86B8 /* AppDelegate.swift in Sources */,
@@ -453,6 +465,7 @@
 				18B9349F1EDFB807002C9D42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18C16FE91ECD9F7B00AE86B8 /* Build configuration list for PBXProject "PlayerDemo" */ = {
 			isa = XCConfigurationList;
