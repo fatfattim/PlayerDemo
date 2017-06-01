@@ -28,7 +28,7 @@ class PlayerDemoUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testEnterPlayerPage() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
@@ -39,7 +39,29 @@ class PlayerDemoUITests: XCTestCase {
         app.buttons[NSLocalizedString("Enter Player Page", bundle: Bundle(for: PlayerDemoUITests.self), comment: "")].tap()
         
         app.navigationBars["プレーヤー"].buttons["Back"].tap()
-        sleep(10)
+        sleep(3)
+    }
+    
+    func testZappingPlayerPage() {
+        
+        XCUIDevice.shared().orientation = .faceUp
+        
+        let app = XCUIApplication()
+        app.buttons["入る Zapping ページ"].tap()
+        
+        let element = app.scrollViews.children(matching: .other).element
+
+        element.swipeLeft()
+        sleep(2)
+        element.swipeLeft()
+        sleep(2)
+        element.swipeLeft()
+        sleep(2)
+        element.swipeRight()
+        sleep(2)
+        element.swipeRight()
+        sleep(2)
+        element.swipeRight()
     }
     
 }
