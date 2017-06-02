@@ -49,6 +49,7 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
     override func viewDidLoad() {
         super.viewDidLoad()
         setOrientation()
+        setNavigation()
         //self.navigationController?.navigationBarHidden = true
         
     }
@@ -70,6 +71,7 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
     
     func actionBack(sender: UIBarButtonItem)
     {
+        self.navigationController?.navigationBar.isHidden = false
          self.navigationController?.popViewController(animated: true)
     }
 
