@@ -78,7 +78,7 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         scrollView.clipsToBounds = false
         scrollView.bounces = false
 
-        let width = scrollView.frame.width * CGFloat(COUNT_PAGE)
+        let width = scrollView.frame.width * CGFloat(COUNT_PAGE - 1)
         // height is magic number which match offset y, I do not know why....
         scrollView.contentSize = CGSize(width: width,
                                         height: (self.scrollView.frame.height - self.scrollView.frame.origin.y))
