@@ -36,18 +36,17 @@ class PlayerDemoUITests: XCTestCase {
         
         let app = XCUIApplication()
         
-        app.buttons[NSLocalizedString("Enter Player Page", bundle: Bundle(for: PlayerDemoUITests.self), comment: "")].tap()
+        app.buttons[Utility.get(key: "Enter Player Page")].tap()
         
-        app.navigationBars["プレーヤー"].buttons["Back"].tap()
+        app.navigationBars[Utility.get(key: "Player")].buttons["Back"].tap()
         sleep(3)
     }
     
     func testZappingPlayerPage() {
-        
         XCUIDevice.shared().orientation = .faceUp
-        
         let app = XCUIApplication()
-        app.buttons["入る Zapping ページ"].tap()
+
+        app.buttons[Utility.get(key: "Enter Zapping Page")].tap()
         
         let element = app.scrollViews.children(matching: .other).element
 
