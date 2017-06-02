@@ -15,6 +15,7 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
     var viewControllers: NSMutableArray = []
     var currentPage = 0
 
+    @IBOutlet weak var customNavi: UINavigationBar!
     @IBOutlet weak var scrollView: UIScrollView!
     // MARK: - UINavigationControllerDelegate method
     public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
@@ -49,9 +50,29 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         super.viewDidLoad()
         setOrientation()
         //self.navigationController?.navigationBarHidden = true
-        self.navigationController?.navigationBar.isHidden = true
+        
     }
     
+    private func setNavigation() {
+        self.navigationController?.navigationBar.isHidden = true
+        // Create a navigation item with a title
+        let navigationItem = UINavigationItem()
+        navigationItem.title = "ZappingHa" //If you want to set a tilte set here.Whatever you want set here.
+        
+        // Create  button for navigation item with refresh
+        let refreshButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action:#selector(self.actionBack))
+
+        // I set refreshButton for the navigation item
+        navigationItem.leftBarButtonItem = refreshButton
+        
+        customNavi.setItems([navigationItem], animated: false)
+    }
+    
+    func actionBack(sender: UIBarButtonItem)
+    {
+         self.navigationController?.popViewController(animated: true)
+    }
+
     private func shouldAutorotate() -> Bool {
         return true
     }
