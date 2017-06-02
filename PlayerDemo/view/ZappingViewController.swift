@@ -48,6 +48,8 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
     override func viewDidLoad() {
         super.viewDidLoad()
         setOrientation()
+        //self.navigationController?.navigationBarHidden = true
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     private func shouldAutorotate() -> Bool {
