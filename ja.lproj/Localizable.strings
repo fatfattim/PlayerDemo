@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  PlayerDemo
+
+  Created by TimChen on 2017/5/19.
+  Copyright © 2017年 dogtim. All rights reserved.
+*/
+"Player" = "プレーヤー";
+"Zapping" = "ザッピン";
+"Back" = "前に";
+"Enter Player Page" = "入る プレーヤー ページ";
+"Enter Zapping Page" = "入る Zapping ページ";
+"Start Over Page" = "やり直す ページ";
+"Demo" = "デモ";
