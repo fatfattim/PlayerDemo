@@ -14,6 +14,7 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
     let COUNT_PAGE = 6
     var viewControllers: NSMutableArray = []
     var currentPage = 0
+    var barIsHidden = false
 
     @IBOutlet weak var customNavi: UINavigationBar!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -50,8 +51,30 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         super.viewDidLoad()
         setOrientation()
         setNavigation()
-        //self.navigationController?.navigationBarHidden = true
-        
+        setToggleEvent()
+    }
+    
+    private func setToggleEvent() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.toggle(_:)))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(gesture)
+    }
+    
+    func toggle(_ sender: UITapGestureRecognizer) {
+        if barIsHidden == false {
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+                self.customNavi.isHidden = true
+            }, completion: { (_) in
+                self.barIsHidden = true
+            })
+        } else {
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+                self.customNavi.isHidden = false
+            }, completion: { (_) in
+                self.barIsHidden = false
+                
+            })
+        }
     }
     
     private func setNavigation() {
