@@ -64,12 +64,27 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         if barIsHidden == false {
             UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
                 self.customNavi.isHidden = true
+                
+                for viewController in self.viewControllers {
+                    if((viewController as? String) != nil) {
+                        continue
+                    }
+                    
+                    (viewController as! PlayerViewController).hideController()
+                }
+                
             }, completion: { (_) in
                 self.barIsHidden = true
             })
         } else {
             UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
                 self.customNavi.isHidden = false
+                for viewController in self.viewControllers {
+                    if((viewController as? String) != nil) {
+                        continue
+                    }
+                    (viewController as! PlayerViewController).showController()
+                }
             }, completion: { (_) in
                 self.barIsHidden = false
                 
@@ -142,18 +157,26 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         // replace the placeholder if necessary
         let controller : PlayerViewController
         if viewControllers[page] is String {
-            controller = PlayerViewController()
+            //controller = PlayerViewController()
             
-            let urlIndex = page % 3
+            controller = StartOverPlayerVCNew(nibName: "PlayerViewController", bundle: nil)
+            
+//            let urlIndex = page % 3
+//            
+//            if (urlIndex == 0) {
+//                controller.setURL(url: URL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8")!, describe : "apple demo m3u8")
+//            } else if (urlIndex == 1) {
+//                controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/ch1.m3u8")!, describe : "Live")
+//            } else {
+//                controller.setURL(url : Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!, describe : "Local file")
+//            }
+            let urlIndex = page % 2
             
             if (urlIndex == 0) {
                 controller.setURL(url: URL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8")!, describe : "apple demo m3u8")
-            } else if (urlIndex == 1) {
-                controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/ch1.m3u8")!, describe : "Live")
             } else {
-                controller.setURL(url : Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!, describe : "Local file")
+                controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/ch1.m3u8")!, describe : "Live")
             }
-            
             viewControllers.replaceObject(at: page, with: controller)
         } else {
             controller = viewControllers[page] as! PlayerViewController

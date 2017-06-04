@@ -62,6 +62,19 @@ class StartOverPlayerVCNew: PlayerViewController {
         player.play()
     }
     
+    override func showController() {
+        timeSlider.isHidden = false
+        startTimeLabel.isHidden = false
+        playPauseButton.isHidden = false
+        durationLabel.isHidden = false
+    }
+    
+    override func hideController() {
+        timeSlider.isHidden = true
+        startTimeLabel.isHidden = true
+        playPauseButton.isHidden = true
+        durationLabel.isHidden = true
+    }
     override func skipSetSliderValue() -> Bool {
         return true
     }
