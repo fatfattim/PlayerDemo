@@ -14,6 +14,7 @@
 		1818D8611ED1D207007D4169 /* ElephantSeals.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1818D8601ED1D207007D4169 /* ElephantSeals.mov */; };
 		182D293C1EE506E100E14851 /* PlayerModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D293A1EE506E100E14851 /* PlayerModeViewController.swift */; };
 		182D293D1EE506E100E14851 /* PlayerModeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182D293B1EE506E100E14851 /* PlayerModeViewController.xib */; };
+		182D293F1EE5563500E14851 /* CellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D293E1EE5563500E14851 /* CellItem.swift */; };
 		187AA3491ED286030023A2BF /* ZappingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AA3471ED286030023A2BF /* ZappingViewController.swift */; };
 		187AA34A1ED286030023A2BF /* ZappingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187AA3481ED286030023A2BF /* ZappingViewController.xib */; };
 		18B2976F1ED8021C0026B209 /* StartOverPlayerVC .swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B2976E1ED8021C0026B209 /* StartOverPlayerVC .swift */; };
@@ -47,6 +48,7 @@
 		1818D8601ED1D207007D4169 /* ElephantSeals.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ElephantSeals.mov; sourceTree = SOURCE_ROOT; };
 		182D293A1EE506E100E14851 /* PlayerModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerModeViewController.swift; sourceTree = "<group>"; };
 		182D293B1EE506E100E14851 /* PlayerModeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerModeViewController.xib; sourceTree = "<group>"; };
+		182D293E1EE5563500E14851 /* CellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellItem.swift; sourceTree = "<group>"; };
 		187AA3471ED286030023A2BF /* ZappingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZappingViewController.swift; sourceTree = "<group>"; };
 		187AA3481ED286030023A2BF /* ZappingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZappingViewController.xib; sourceTree = "<group>"; };
 		18B2976E1ED8021C0026B209 /* StartOverPlayerVC .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StartOverPlayerVC .swift"; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			children = (
 				182D293A1EE506E100E14851 /* PlayerModeViewController.swift */,
 				182D293B1EE506E100E14851 /* PlayerModeViewController.xib */,
+				182D293E1EE5563500E14851 /* CellItem.swift */,
 			);
 			path = options;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182D293F1EE5563500E14851 /* CellItem.swift in Sources */,
 				182D293C1EE506E100E14851 /* PlayerModeViewController.swift in Sources */,
 				18B934911EDE97FF002C9D42 /* StartOverPlayerVCNew.swift in Sources */,
 				18B934A91EE00BB8002C9D42 /* Subscript.swift in Sources */,

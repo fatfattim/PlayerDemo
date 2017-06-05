@@ -57,12 +57,8 @@ class PlayerBuilder {
 }
 
 class PlayerModeViewController: UITableViewController {
-    
-    var info = [
-        ["Single","Zapping"],
-        ["Normal", "StartOver"],
-        ["Next"]
-    ]
+
+    var info : Array<Array<CellItem>> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,9 +71,35 @@ class PlayerModeViewController: UITableViewController {
         
         tableView.register(
             UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        info = createInfo()
 
     }
 
+    func createInfo() -> Array<Array<CellItem>> {
+        var temp : Array<Array<CellItem>>
+        temp = Array<Array<CellItem>>()
+        temp.append(createModeInfo(sources: ["Single","Zapping"]))
+        temp.append(createModeInfo(sources: ["Normal", "StartOver"]))
+        temp.append(createModeInfo(sources: ["Next"]))
+        return temp
+    }
+    
+    func createModeInfo(sources : Array<String>) -> Array<CellItem> {
+        var temp : Array<CellItem> = []
+        
+        
+        for (index,element) in sources.enumerated() {
+            let item = CellItem()
+            item.name = element
+            if(index == 0 && element != "Next") {
+                item.isSelected = true
+            }
+            temp.append(item)
+        }
+        return temp
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -90,11 +112,11 @@ class PlayerModeViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-        print("section " , indexPath)
-        if(indexPath.section == 2) {
-            cell.accessoryType = .none
+        if(indexPath.section == info.count - 1) {
             cell.textLabel?.textAlignment = .center
-        } else if(indexPath.row == 0) {
+        }
+        
+        if(info[indexPath.section][indexPath.row].isSelected) {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
@@ -102,14 +124,14 @@ class PlayerModeViewController: UITableViewController {
         
         if let myLabel = cell.textLabel {
             myLabel.text =
-            "\(info[indexPath.section][indexPath.row])"
+            "\(info[indexPath.section][indexPath.row].name)"
         }
         
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(indexPath.section == 2) {
+        if(indexPath.section == info.count - 1) {
             
             var uiMode = ""
             
@@ -124,7 +146,7 @@ class PlayerModeViewController: UITableViewController {
                 }
             }
             
-            self.navigationController?.pushViewController( PlayerBuilder.build(uiMode, playerMode: ""), animated: true)
+            self.navigationController?.pushViewController(PlayerBuilder.build(uiMode, playerMode: ""), animated: true)
 
         } else {
             let selectedCell = tableView.cellForRow(at: indexPath)
@@ -135,8 +157,10 @@ class PlayerModeViewController: UITableViewController {
                 
                 if (cell == selectedCell) {
                     cell.accessoryType = .checkmark
+                    info[indexPath.section][i].isSelected = true
                 } else {
                     cell.accessoryType = .none
+                    info[indexPath.section][i].isSelected = false
                 }
             }
             
