@@ -12,6 +12,8 @@
 		1818D84E1ECEDB9A007D4169 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1818D8501ECEDB9A007D4169 /* Localizable.strings */; };
 		1818D85D1ED18820007D4169 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D85C1ED18820007D4169 /* PlayerView.swift */; };
 		1818D8611ED1D207007D4169 /* ElephantSeals.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1818D8601ED1D207007D4169 /* ElephantSeals.mov */; };
+		182D293C1EE506E100E14851 /* PlayerModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D293A1EE506E100E14851 /* PlayerModeViewController.swift */; };
+		182D293D1EE506E100E14851 /* PlayerModeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182D293B1EE506E100E14851 /* PlayerModeViewController.xib */; };
 		187AA3491ED286030023A2BF /* ZappingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AA3471ED286030023A2BF /* ZappingViewController.swift */; };
 		187AA34A1ED286030023A2BF /* ZappingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187AA3481ED286030023A2BF /* ZappingViewController.xib */; };
 		18B2976F1ED8021C0026B209 /* StartOverPlayerVC .swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B2976E1ED8021C0026B209 /* StartOverPlayerVC .swift */; };
@@ -43,6 +45,8 @@
 		1818D84F1ECEDB9A007D4169 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1818D85C1ED18820007D4169 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		1818D8601ED1D207007D4169 /* ElephantSeals.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ElephantSeals.mov; sourceTree = SOURCE_ROOT; };
+		182D293A1EE506E100E14851 /* PlayerModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerModeViewController.swift; sourceTree = "<group>"; };
+		182D293B1EE506E100E14851 /* PlayerModeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerModeViewController.xib; sourceTree = "<group>"; };
 		187AA3471ED286030023A2BF /* ZappingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZappingViewController.swift; sourceTree = "<group>"; };
 		187AA3481ED286030023A2BF /* ZappingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZappingViewController.xib; sourceTree = "<group>"; };
 		18B2976E1ED8021C0026B209 /* StartOverPlayerVC .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StartOverPlayerVC .swift"; sourceTree = "<group>"; };
@@ -86,6 +90,15 @@
 				1818D85C1ED18820007D4169 /* PlayerView.swift */,
 			);
 			path = player;
+			sourceTree = "<group>";
+		};
+		182D29311EE5029B00E14851 /* options */ = {
+			isa = PBXGroup;
+			children = (
+				182D293A1EE506E100E14851 /* PlayerModeViewController.swift */,
+				182D293B1EE506E100E14851 /* PlayerModeViewController.xib */,
+			);
+			path = options;
 			sourceTree = "<group>";
 		};
 		18B934971EDFB807002C9D42 /* PlayerDemoUITests */ = {
@@ -143,6 +156,7 @@
 		18C170031ECDA71800AE86B8 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				182D29311EE5029B00E14851 /* options */,
 				1818D8411ECEA902007D4169 /* PlayerViewController.swift */,
 				1818D8421ECEA902007D4169 /* PlayerViewController.xib */,
 				18C170061ECE83B700AE86B8 /* RootViewController.swift */,
@@ -254,6 +268,7 @@
 				187AA34A1ED286030023A2BF /* ZappingViewController.xib in Resources */,
 				18C170091ECE83B700AE86B8 /* RootViewController.xib in Resources */,
 				1818D8611ED1D207007D4169 /* ElephantSeals.mov in Resources */,
+				182D293D1EE506E100E14851 /* PlayerModeViewController.xib in Resources */,
 				18C1700B1ECE8C1C00AE86B8 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182D293C1EE506E100E14851 /* PlayerModeViewController.swift in Sources */,
 				18B934911EDE97FF002C9D42 /* StartOverPlayerVCNew.swift in Sources */,
 				18B934A91EE00BB8002C9D42 /* Subscript.swift in Sources */,
 				187AA3491ED286030023A2BF /* ZappingViewController.swift in Sources */,

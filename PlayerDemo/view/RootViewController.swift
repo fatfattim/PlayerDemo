@@ -53,8 +53,11 @@ class RootViewController: UIViewController {
     }
 
     @IBAction func touchUpInsideOptions(_ sender: Any) {
-        
+        let vc = PlayerModeViewController()
+        vc.title = NSLocalizedString("Mode", comment: "Mode")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
+
     @IBAction func touchUpInsideStartOverBtn(_ sender: Any) {
         let vc = StartOverPlayerVCNew(nibName: "PlayerViewController", bundle: nil)
         vc.title = NSLocalizedString("Start Over Page", comment: "StartOver Title")
