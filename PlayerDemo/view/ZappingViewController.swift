@@ -62,34 +62,27 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
     
     func toggle(_ sender: UITapGestureRecognizer) {
         if barIsHidden == false {
-            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
-                self.customNavi.isHidden = true
-                
-                for viewController in self.viewControllers {
-                    if((viewController as? String) != nil) {
-                        continue
-                    }
-                    
-                    (viewController as! PlayerViewController).hideController()
-                }
-                
-            }, completion: { (_) in
-                self.barIsHidden = true
-            })
+            setHiddenTask(isHidden: true)
+            
         } else {
-            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
-                self.customNavi.isHidden = false
-                for viewController in self.viewControllers {
-                    if((viewController as? String) != nil) {
-                        continue
-                    }
-                    (viewController as! PlayerViewController).showController()
-                }
-            }, completion: { (_) in
-                self.barIsHidden = false
-                
-            })
+            setHiddenTask(isHidden: false)
         }
+    }
+    
+    private func setHiddenTask(isHidden: Bool) {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+            self.customNavi.isHidden = true
+            
+            for viewController in self.viewControllers {
+                if((viewController as? String) != nil) {
+                    continue
+                }
+                
+                (viewController as! PlayerViewController).isControllerHidden(isHidden: isHidden)
+            }
+            self.barIsHidden = isHidden
+            self.customNavi.isHidden = isHidden
+        }, completion: nil)
     }
     
     private func setNavigation() {
@@ -173,9 +166,9 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
             let urlIndex = page % 2
             
             if (urlIndex == 0) {
-                controller.setURL(url: URL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8")!, describe : "apple demo m3u8")
+                controller.setURL(url: URL(string: "http://linear.demo.kkstream.tv/poc.m3u8")!, describe : "apple demo m3u8")
             } else {
-                controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/ch1.m3u8")!, describe : "Live")
+                controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/poc2.m3u8")!, describe : "Live")
             }
             viewControllers.replaceObject(at: page, with: controller)
         } else {

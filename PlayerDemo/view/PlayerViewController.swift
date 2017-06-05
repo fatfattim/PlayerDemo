@@ -519,6 +519,10 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         
     }
     
+    func isControllerHidden(isHidden : Bool) {
+    
+    }
+    
     // Trigger KVO for anyone observing our properties affected by player and player.currentItem
     override class func keyPathsForValuesAffectingValue(forKey key: String) -> Set<String> {
         let affectedKeyPathsMappingByKey: [String: Set<String>] = [
