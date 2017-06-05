@@ -77,17 +77,30 @@ class PlayerModeViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) {
-            cell.accessoryType = .checkmark
+        let selectedCell = tableView.cellForRow(at: indexPath)
+        let rowsCount = self.tableView.numberOfRows(inSection: indexPath.section)
+        for i in 0..<rowsCount  {
+            let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: indexPath.section))!
+            // your custom code (deselecting)
+            
+            if (cell == selectedCell) {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
         }
+        
+        
+        print("select index ", indexPath)
     }
     
-    override func tableView(_ tableView: UITableView,
+    /*override func tableView(_ tableView: UITableView,
                             didDeselectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.accessoryType = .none
         }
-    }
+        print("deselect index ", indexPath)
+    }*/
     
     // 有幾組 section
     func numberOfSectionsInTableView(
