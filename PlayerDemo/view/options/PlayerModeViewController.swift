@@ -8,16 +8,48 @@
 
 import UIKit
 
-
 class PlayerBuilder {
     static func build(_ uiMode: String, playerMode: String) -> UIViewController {
         let vc : UIViewController
         if(uiMode == "Zapping") {
-            vc = ZappingViewController() //change this to your class name
+            
+            if(playerMode == "Normal") {
+                vc = ZappingViewController()
+                (vc as? ZappingViewController)?.doSomething(callback: { (page) in
+                    let controller = StartOverPlayerVCNew(nibName: "PlayerViewController", bundle: nil)
+                    let urlIndex = page % 2
+                    
+                    if (urlIndex == 0) {
+                        controller.setURL(url: URL(string: "http://linear.demo.kkstream.tv/poc.m3u8")!, describe : "apple demo m3u8")
+                    } else {
+                        controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/poc2.m3u8")!, describe : "Live")
+                    }
+                    return controller
+                })
+            } else {
+                vc = ZappingViewController()
+                (vc as? ZappingViewController)?.doSomething(callback: { (page) in
+                    let controller = PlayerViewController()
+                    let urlIndex = page % 2
+                    
+                    if (urlIndex == 0) {
+                        controller.setURL(url: URL(string: "http://linear.demo.kkstream.tv/poc.m3u8")!, describe : "apple demo m3u8")
+                    } else {
+                        controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/poc2.m3u8")!, describe : "Live")
+                    }
+                    return controller
+                })
+            }
             
             vc.title = NSLocalizedString("Zapping", comment: "Zapping Title")
         } else {
-            vc = PlayerViewController() //change this to your class name
+            
+            if(playerMode == "Normal") {
+                vc = PlayerViewController()
+            } else {
+                vc = StartOverPlayerVCNew(nibName: "PlayerViewController", bundle: nil)
+            }
+            
             vc.title = NSLocalizedString("Player", comment: "Player Title")
         }
         return vc
@@ -58,7 +90,7 @@ class PlayerModeViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-        
+        print("section " , indexPath)
         if(indexPath.section == 2) {
             cell.accessoryType = .none
             cell.textLabel?.textAlignment = .center

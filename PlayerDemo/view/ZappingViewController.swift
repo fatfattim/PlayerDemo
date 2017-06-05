@@ -12,6 +12,9 @@ import UIKit
 
 class ZappingViewController: UIViewController , UINavigationControllerDelegate , UIScrollViewDelegate {
     let COUNT_PAGE = 6
+
+    var callback:((Int)->PlayerViewController)?
+    
     var viewControllers: NSMutableArray = []
     var currentPage = 0
     var barIsHidden = false
@@ -39,6 +42,10 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         // a possible optimization would be to unload the views+controllers which are no longer visible
     }
     
+    public func doSomething(callback:@escaping (Int)->PlayerViewController) {
+        self.callback = callback
+    }
+
     private func setOrientation() {
         self.navigationController?.delegate = self
         if (UIApplication.shared.statusBarOrientation.isPortrait) {
@@ -61,12 +68,7 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
     }
     
     func toggle(_ sender: UITapGestureRecognizer) {
-        if barIsHidden == false {
-            setHiddenTask(isHidden: true)
-            
-        } else {
-            setHiddenTask(isHidden: false)
-        }
+        setHiddenTask(isHidden: !barIsHidden)
     }
     
     private func setHiddenTask(isHidden: Bool) {
@@ -150,26 +152,7 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         // replace the placeholder if necessary
         let controller : PlayerViewController
         if viewControllers[page] is String {
-            //controller = PlayerViewController()
-            
-            controller = StartOverPlayerVCNew(nibName: "PlayerViewController", bundle: nil)
-            
-//            let urlIndex = page % 3
-//            
-//            if (urlIndex == 0) {
-//                controller.setURL(url: URL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8")!, describe : "apple demo m3u8")
-//            } else if (urlIndex == 1) {
-//                controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/ch1.m3u8")!, describe : "Live")
-//            } else {
-//                controller.setURL(url : Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!, describe : "Local file")
-//            }
-            let urlIndex = page % 2
-            
-            if (urlIndex == 0) {
-                controller.setURL(url: URL(string: "http://linear.demo.kkstream.tv/poc.m3u8")!, describe : "apple demo m3u8")
-            } else {
-                controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/poc2.m3u8")!, describe : "Live")
-            }
+            controller = self.callback!(page)
             viewControllers.replaceObject(at: page, with: controller)
         } else {
             controller = viewControllers[page] as! PlayerViewController
