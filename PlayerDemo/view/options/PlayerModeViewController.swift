@@ -12,7 +12,8 @@ class PlayerModeViewController: UITableViewController {
     
     var info = [
         ["Single","Zapping"],
-        ["StartOver","Normal"]
+        ["Normal", "StartOver"],
+        ["Next"]
     ]
 
     override func viewDidLoad() {
@@ -29,16 +30,10 @@ class PlayerModeViewController: UITableViewController {
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
+        return info.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,27 +41,16 @@ class PlayerModeViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // 取得 tableView 目前使用的 cell
-        let cell =
-            tableView.dequeueReusableCell(
-                withIdentifier: "Cell", for: indexPath) as
-        UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         
-        // 設置 Accessory 按鈕樣式
-        if indexPath.section == 1 {
-            if indexPath.row == 0 {
-                cell.accessoryType = .checkmark
-            } else if indexPath.row == 1 {
-                cell.accessoryType = .detailButton
-            } else if indexPath.row == 2 {
-                cell.accessoryType =
-                    .detailDisclosureButton
-            } else if indexPath.row == 3 {
-                cell.accessoryType = .disclosureIndicator
-            }
+        if(indexPath.section == 2) {
+            cell.accessoryType = .none
+        } else if(indexPath.row == 0) {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
         }
         
-        // 顯示的內容
         if let myLabel = cell.textLabel {
             myLabel.text =
             "\(info[indexPath.section][indexPath.row])"
@@ -75,43 +59,31 @@ class PlayerModeViewController: UITableViewController {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView,
-                            didSelectRowAt indexPath: IndexPath) {
-        let selectedCell = tableView.cellForRow(at: indexPath)
-        let rowsCount = self.tableView.numberOfRows(inSection: indexPath.section)
-        for i in 0..<rowsCount  {
-            let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: indexPath.section))!
-            // your custom code (deselecting)
-            
-            if (cell == selectedCell) {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.section == 2) {
+            print("Next")
+        } else {
+            let selectedCell = tableView.cellForRow(at: indexPath)
+            let rowsCount = self.tableView.numberOfRows(inSection: indexPath.section)
+            for i in 0..<rowsCount  {
+                let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: indexPath.section))!
+                // your custom code (deselecting)
+                
+                if (cell == selectedCell) {
+                    cell.accessoryType = .checkmark
+                } else {
+                    cell.accessoryType = .none
+                }
             }
+            
         }
-        
-        
-        print("select index ", indexPath)
     }
-    
-    /*override func tableView(_ tableView: UITableView,
-                            didDeselectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) {
-            cell.accessoryType = .none
-        }
-        print("deselect index ", indexPath)
-    }*/
-    
-    // 有幾組 section
+
     func numberOfSectionsInTableView(
         tableView: UITableView) -> Int {
         return info.count
     }
-    
-    // 每個 section 的標題
-   
-    
-    
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
         switch section
