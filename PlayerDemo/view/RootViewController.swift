@@ -13,6 +13,7 @@ class RootViewController: UIViewController {
     @IBOutlet weak var naviPlayerBtn: UIButton!
     @IBOutlet weak var zappingBtn: UIButton!
     @IBOutlet weak var startOverBtn: UIButton!
+    @IBOutlet weak var optionsBtn: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class RootViewController: UIViewController {
         naviPlayerBtn.setTitle(NSLocalizedString("Enter Player Page", comment: "Player page"), for: UIControlState.normal)
         zappingBtn.setTitle(NSLocalizedString("Enter Zapping Page", comment: "Zapping page"), for: UIControlState.normal)
         startOverBtn.setTitle(NSLocalizedString("Start Over Page", comment: "Start Over Page"), for: UIControlState.normal)
+        optionsBtn.setTitle(NSLocalizedString("Options", comment: "Options"), for: UIControlState.normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +52,9 @@ class RootViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
+    @IBAction func touchUpInsideOptions(_ sender: Any) {
+        
+    }
     @IBAction func touchUpInsideStartOverBtn(_ sender: Any) {
         let vc = StartOverPlayerVCNew(nibName: "PlayerViewController", bundle: nil)
         vc.title = NSLocalizedString("Start Over Page", comment: "StartOver Title")
