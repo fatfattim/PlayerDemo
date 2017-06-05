@@ -1,11 +1,3 @@
-//
-//  PlayerViewController.swift
-//  PlayerDemo
-//
-//  Created by TimChen on 2017/5/19.
-//  Copyright © 2017年 dogtim. All rights reserved.
-//
-
 import Foundation
 import AVFoundation
 import UIKit
@@ -28,10 +20,7 @@ class StartOverPlayerVCNew: PlayerViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        timeSlider.isHidden = false
-        startTimeLabel.isHidden = false
-        playPauseButton.isHidden = false
-        durationLabel.isHidden = false
+        isControllerHidden(isHidden: false)
         seekInfoLabel.isHidden = true
         debugLabel.isHidden = true
     }
@@ -44,14 +33,6 @@ class StartOverPlayerVCNew: PlayerViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
-    }
-    
-    // Play advertisement if the program finish
-    override func moviePlayBackFinished(notification: Notification) {
-//        if((notification.object! as! AVPlayerItem) == player.currentItem) {
-//            fileUrl = poc_url_1
-//            asset = AVURLAsset(url: fileUrl, options: nil)
-//        }
     }
     
     override func readyToPlay() {

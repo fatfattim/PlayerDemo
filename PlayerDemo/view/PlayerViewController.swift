@@ -247,9 +247,6 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
-    
-    
-    
     // Auto replay
     func moviePlayBackFinished(notification: Notification) {
        if((notification.object! as! AVPlayerItem) == player.currentItem) {
