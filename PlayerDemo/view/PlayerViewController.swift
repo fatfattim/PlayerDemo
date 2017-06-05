@@ -510,15 +510,7 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     func readyToPlay() {
         player.play()
     }
-    
-    func showController() {
-        
-    }
-    
-    func hideController() {
-        
-    }
-    
+
     func isControllerHidden(isHidden : Bool) {
     
     }
