@@ -147,6 +147,12 @@ class PlayerModeViewController: UITableViewController {
             "\(info[indexPath.section][indexPath.row].name)"
         }
         
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.byCharWrapping
+        
+//        UIView.animate(withDuration: 12.0, delay: 1, options: ([.curveLinear, .repeat]), animations: {() -> Void in
+//            cell.textLabel?.center = CGPoint(x: 0 - (cell.textLabel?.bounds.size.width)! / 2, y: (cell.textLabel?.center.y)!)
+//        }, completion:  { _ in })
         return cell
     }
 
@@ -172,14 +178,12 @@ class PlayerModeViewController: UITableViewController {
             let selectedCell = tableView.cellForRow(at: indexPath)
             let rowsCount = self.tableView.numberOfRows(inSection: indexPath.section)
             for i in 0..<rowsCount  {
-                let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: indexPath.section))!
-                // your custom code (deselecting)
-                
+                let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: indexPath.section))
                 if (cell == selectedCell) {
-                    cell.accessoryType = .checkmark
+                    cell?.accessoryType = .checkmark
                     info[indexPath.section][i].isSelected = true
                 } else {
-                    cell.accessoryType = .none
+                    cell?.accessoryType = .none
                     info[indexPath.section][i].isSelected = false
                 }
             }
@@ -204,6 +208,16 @@ class PlayerModeViewController: UITableViewController {
             return "Select URLs"
         default:
             return "Action"
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = indexPath.section
+        if(section == info.count - 2) {
+            return 90
+        } else {
+            
+            return 30
         }
     }
     
