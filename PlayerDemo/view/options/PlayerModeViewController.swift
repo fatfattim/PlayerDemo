@@ -16,7 +16,7 @@ class PlayerBuilder {
             if(playerMode == "Normal") {
                 vc = ZappingViewController()
                 (vc as? ZappingViewController)?.doSomething(callback: { (page) in
-                    let controller = StartOverPlayerVCNew(nibName: "PlayerViewController", bundle: nil)
+                    let controller = PlayerViewController()
                     let urlIndex = page % 2
                     
                     if (urlIndex == 0) {
@@ -29,7 +29,8 @@ class PlayerBuilder {
             } else {
                 vc = ZappingViewController()
                 (vc as? ZappingViewController)?.doSomething(callback: { (page) in
-                    let controller = PlayerViewController()
+                    
+                    let controller = StartOverPlayerVCNew(nibName: "PlayerViewController", bundle: nil)
                     let urlIndex = page % 2
                     
                     if (urlIndex == 0) {
@@ -59,7 +60,7 @@ class PlayerBuilder {
 class PlayerModeViewController: UITableViewController {
 
     var info : Array<Array<CellItem>> = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,8 +82,27 @@ class PlayerModeViewController: UITableViewController {
         temp = Array<Array<CellItem>>()
         temp.append(createModeInfo(sources: ["Single","Zapping"]))
         temp.append(createModeInfo(sources: ["Normal", "StartOver"]))
+        temp.append(createModeInfo(sources: getUrls()))
         temp.append(createModeInfo(sources: ["Next"]))
+        
         return temp
+    }
+    
+    func getUrls() -> Array<String> {
+        let fileUrl : URL = Bundle.main.url(forResource: "urls", withExtension: "txt")!
+        
+        //reading
+        do {
+            let text2 = try String(contentsOf: fileUrl, encoding: String.Encoding.utf8)
+            let array = text2.components(separatedBy: .newlines)
+            
+            
+            return array.filter({ $0.hasPrefix("http")})
+        }
+        catch {
+            /* error handling here */
+        }
+        return []
     }
     
     func createModeInfo(sources : Array<String>) -> Array<CellItem> {
@@ -180,8 +200,10 @@ class PlayerModeViewController: UITableViewController {
             return "UI Mode"
         case 1:
             return "Player Mode"
+        case 2:
+            return "Select URLs"
         default:
-            return "Other Devices"
+            return "Action"
         }
     }
     
