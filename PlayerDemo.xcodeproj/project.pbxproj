@@ -12,8 +12,18 @@
 		1818D84E1ECEDB9A007D4169 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1818D8501ECEDB9A007D4169 /* Localizable.strings */; };
 		1818D85D1ED18820007D4169 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D85C1ED18820007D4169 /* PlayerView.swift */; };
 		1818D8611ED1D207007D4169 /* ElephantSeals.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1818D8601ED1D207007D4169 /* ElephantSeals.mov */; };
+		182D293C1EE506E100E14851 /* PlayerModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D293A1EE506E100E14851 /* PlayerModeViewController.swift */; };
+		182D293D1EE506E100E14851 /* PlayerModeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182D293B1EE506E100E14851 /* PlayerModeViewController.xib */; };
+		182D293F1EE5563500E14851 /* CellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D293E1EE5563500E14851 /* CellItem.swift */; };
+		182D29411EE682C200E14851 /* urls.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182D29401EE682C200E14851 /* urls.txt */; };
 		187AA3491ED286030023A2BF /* ZappingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AA3471ED286030023A2BF /* ZappingViewController.swift */; };
 		187AA34A1ED286030023A2BF /* ZappingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187AA3481ED286030023A2BF /* ZappingViewController.xib */; };
+		18B2976F1ED8021C0026B209 /* StartOverPlayerVC .swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B2976E1ED8021C0026B209 /* StartOverPlayerVC .swift */; };
+		18B934911EDE97FF002C9D42 /* StartOverPlayerVCNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B934901EDE97FF002C9D42 /* StartOverPlayerVCNew.swift */; };
+		18B934991EDFB807002C9D42 /* PlayerDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B934981EDFB807002C9D42 /* PlayerDemoUITests.swift */; };
+		18B934A31EDFC497002C9D42 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1818D8501ECEDB9A007D4169 /* Localizable.strings */; };
+		18B934A91EE00BB8002C9D42 /* Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B934A81EE00BB8002C9D42 /* Subscript.swift */; };
+		18B934B11EE101BE002C9D42 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B934B01EE101BE002C9D42 /* Utility.swift */; };
 		18C16FF21ECD9F7B00AE86B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C16FF11ECD9F7B00AE86B8 /* AppDelegate.swift */; };
 		18C16FF91ECD9F7B00AE86B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C16FF81ECD9F7B00AE86B8 /* Assets.xcassets */; };
 		18C170081ECE83B700AE86B8 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C170061ECE83B700AE86B8 /* RootViewController.swift */; };
@@ -21,14 +31,36 @@
 		18C1700B1ECE8C1C00AE86B8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C1700A1ECE8C1C00AE86B8 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		18B9349B1EDFB807002C9D42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18C16FE61ECD9F7B00AE86B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18C16FED1ECD9F7B00AE86B8;
+			remoteInfo = PlayerDemo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1818D8411ECEA902007D4169 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		1818D8421ECEA902007D4169 /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		1818D84F1ECEDB9A007D4169 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1818D85C1ED18820007D4169 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		1818D8601ED1D207007D4169 /* ElephantSeals.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ElephantSeals.mov; sourceTree = SOURCE_ROOT; };
+		182D293A1EE506E100E14851 /* PlayerModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerModeViewController.swift; sourceTree = "<group>"; };
+		182D293B1EE506E100E14851 /* PlayerModeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerModeViewController.xib; sourceTree = "<group>"; };
+		182D293E1EE5563500E14851 /* CellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellItem.swift; sourceTree = "<group>"; };
+		182D29401EE682C200E14851 /* urls.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = urls.txt; sourceTree = SOURCE_ROOT; };
 		187AA3471ED286030023A2BF /* ZappingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZappingViewController.swift; sourceTree = "<group>"; };
 		187AA3481ED286030023A2BF /* ZappingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZappingViewController.xib; sourceTree = "<group>"; };
+		18B2976E1ED8021C0026B209 /* StartOverPlayerVC .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StartOverPlayerVC .swift"; sourceTree = "<group>"; };
+		18B934901EDE97FF002C9D42 /* StartOverPlayerVCNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartOverPlayerVCNew.swift; sourceTree = "<group>"; };
+		18B934961EDFB807002C9D42 /* PlayerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18B934981EDFB807002C9D42 /* PlayerDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDemoUITests.swift; sourceTree = "<group>"; };
+		18B9349A1EDFB807002C9D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18B934A81EE00BB8002C9D42 /* Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscript.swift; sourceTree = "<group>"; };
+		18B934B01EE101BE002C9D42 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		18B934B21EE120AF002C9D42 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18C16FEE1ECD9F7B00AE86B8 /* PlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C16FF11ECD9F7B00AE86B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18C16FF81ECD9F7B00AE86B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -39,6 +71,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		18B934931EDFB807002C9D42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		18C16FEB1ECD9F7B00AE86B8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,12 +96,41 @@
 			path = player;
 			sourceTree = "<group>";
 		};
+		182D29311EE5029B00E14851 /* options */ = {
+			isa = PBXGroup;
+			children = (
+				182D293A1EE506E100E14851 /* PlayerModeViewController.swift */,
+				182D293B1EE506E100E14851 /* PlayerModeViewController.xib */,
+				182D293E1EE5563500E14851 /* CellItem.swift */,
+			);
+			path = options;
+			sourceTree = "<group>";
+		};
+		18B934971EDFB807002C9D42 /* PlayerDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				18B934981EDFB807002C9D42 /* PlayerDemoUITests.swift */,
+				18B9349A1EDFB807002C9D42 /* Info.plist */,
+				18B934B01EE101BE002C9D42 /* Utility.swift */,
+			);
+			path = PlayerDemoUITests;
+			sourceTree = "<group>";
+		};
+		18B934A71EE00BA0002C9D42 /* practice */ = {
+			isa = PBXGroup;
+			children = (
+				18B934A81EE00BB8002C9D42 /* Subscript.swift */,
+			);
+			path = practice;
+			sourceTree = "<group>";
+		};
 		18C16FE51ECD9F7B00AE86B8 = {
 			isa = PBXGroup;
 			children = (
 				1818D8501ECEDB9A007D4169 /* Localizable.strings */,
 				18C1700A1ECE8C1C00AE86B8 /* Default-568h@2x.png */,
 				18C16FF01ECD9F7B00AE86B8 /* PlayerDemo */,
+				18B934971EDFB807002C9D42 /* PlayerDemoUITests */,
 				18C16FEF1ECD9F7B00AE86B8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				18C16FEE1ECD9F7B00AE86B8 /* PlayerDemo.app */,
+				18B934961EDFB807002C9D42 /* PlayerDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -79,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				1818D8601ED1D207007D4169 /* ElephantSeals.mov */,
+				182D29401EE682C200E14851 /* urls.txt */,
+				18B934A71EE00BA0002C9D42 /* practice */,
 				1818D85B1ED18759007D4169 /* player */,
 				18C170031ECDA71800AE86B8 /* view */,
 				18C16FF11ECD9F7B00AE86B8 /* AppDelegate.swift */,
@@ -91,10 +162,13 @@
 		18C170031ECDA71800AE86B8 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				18C170061ECE83B700AE86B8 /* RootViewController.swift */,
-				18C170071ECE83B700AE86B8 /* RootViewController.xib */,
+				182D29311EE5029B00E14851 /* options */,
 				1818D8411ECEA902007D4169 /* PlayerViewController.swift */,
 				1818D8421ECEA902007D4169 /* PlayerViewController.xib */,
+				18C170061ECE83B700AE86B8 /* RootViewController.swift */,
+				18C170071ECE83B700AE86B8 /* RootViewController.xib */,
+				18B2976E1ED8021C0026B209 /* StartOverPlayerVC .swift */,
+				18B934901EDE97FF002C9D42 /* StartOverPlayerVCNew.swift */,
 				187AA3471ED286030023A2BF /* ZappingViewController.swift */,
 				187AA3481ED286030023A2BF /* ZappingViewController.xib */,
 			);
@@ -104,6 +178,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		18B934951EDFB807002C9D42 /* PlayerDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18B9349D1EDFB807002C9D42 /* Build configuration list for PBXNativeTarget "PlayerDemoUITests" */;
+			buildPhases = (
+				18B934921EDFB807002C9D42 /* Sources */,
+				18B934931EDFB807002C9D42 /* Frameworks */,
+				18B934941EDFB807002C9D42 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18B9349C1EDFB807002C9D42 /* PBXTargetDependency */,
+			);
+			name = PlayerDemoUITests;
+			productName = PlayerDemoUITests;
+			productReference = 18B934961EDFB807002C9D42 /* PlayerDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		18C16FED1ECD9F7B00AE86B8 /* PlayerDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18C170001ECD9F7B00AE86B8 /* Build configuration list for PBXNativeTarget "PlayerDemo" */;
@@ -131,6 +223,11 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = dogtim;
 				TargetAttributes = {
+					18B934951EDFB807002C9D42 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 18C16FED1ECD9F7B00AE86B8;
+					};
 					18C16FED1ECD9F7B00AE86B8 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 72M2493FFK;
@@ -153,11 +250,20 @@
 			projectRoot = "";
 			targets = (
 				18C16FED1ECD9F7B00AE86B8 /* PlayerDemo */,
+				18B934951EDFB807002C9D42 /* PlayerDemoUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		18B934941EDFB807002C9D42 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18B934A31EDFC497002C9D42 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		18C16FEC1ECD9F7B00AE86B8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -168,6 +274,8 @@
 				187AA34A1ED286030023A2BF /* ZappingViewController.xib in Resources */,
 				18C170091ECE83B700AE86B8 /* RootViewController.xib in Resources */,
 				1818D8611ED1D207007D4169 /* ElephantSeals.mov in Resources */,
+				182D293D1EE506E100E14851 /* PlayerModeViewController.xib in Resources */,
+				182D29411EE682C200E14851 /* urls.txt in Resources */,
 				18C1700B1ECE8C1C00AE86B8 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,11 +283,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		18B934921EDFB807002C9D42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18B934B11EE101BE002C9D42 /* Utility.swift in Sources */,
+				18B934991EDFB807002C9D42 /* PlayerDemoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		18C16FEA1ECD9F7B00AE86B8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182D293F1EE5563500E14851 /* CellItem.swift in Sources */,
+				182D293C1EE506E100E14851 /* PlayerModeViewController.swift in Sources */,
+				18B934911EDE97FF002C9D42 /* StartOverPlayerVCNew.swift in Sources */,
+				18B934A91EE00BB8002C9D42 /* Subscript.swift in Sources */,
 				187AA3491ED286030023A2BF /* ZappingViewController.swift in Sources */,
+				18B2976F1ED8021C0026B209 /* StartOverPlayerVC .swift in Sources */,
 				18C16FF21ECD9F7B00AE86B8 /* AppDelegate.swift in Sources */,
 				18C170081ECE83B700AE86B8 /* RootViewController.swift in Sources */,
 				1818D8431ECEA902007D4169 /* PlayerViewController.swift in Sources */,
@@ -189,11 +311,20 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		18B9349C1EDFB807002C9D42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18C16FED1ECD9F7B00AE86B8 /* PlayerDemo */;
+			targetProxy = 18B9349B1EDFB807002C9D42 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		1818D8501ECEDB9A007D4169 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1818D84F1ECEDB9A007D4169 /* Base */,
+				18B934B21EE120AF002C9D42 /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -201,6 +332,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		18B9349E1EDFB807002C9D42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PlayerDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = doggy.PlayerDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = PlayerDemo;
+			};
+			name = Debug;
+		};
+		18B9349F1EDFB807002C9D42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PlayerDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = doggy.PlayerDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = PlayerDemo;
+			};
+			name = Release;
+		};
 		18C16FFE1ECD9F7B00AE86B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -302,12 +457,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 72M2493FFK;
 				INFOPLIST_FILE = PlayerDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = doggy.PlayerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -316,12 +473,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 72M2493FFK;
 				INFOPLIST_FILE = PlayerDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = doggy.PlayerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -329,6 +488,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		18B9349D1EDFB807002C9D42 /* Build configuration list for PBXNativeTarget "PlayerDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18B9349E1EDFB807002C9D42 /* Debug */,
+				18B9349F1EDFB807002C9D42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		18C16FE91ECD9F7B00AE86B8 /* Build configuration list for PBXProject "PlayerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

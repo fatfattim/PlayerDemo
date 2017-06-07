@@ -21,6 +21,7 @@ private var playerViewControllerKVOContext = 0
 // http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8
 class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     
+    @IBOutlet weak var seekInfoLabel: UILabel!
     // MARK: - IBOutlets
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var startTimeLabel: UILabel!
@@ -29,17 +30,22 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var fastForwardButton: UIButton!
     @IBOutlet weak var playerView: PlayerView!
+    @IBOutlet weak var debugLabel: UILabel!
     
-    let player = AVPlayer()
+    var _currentTime : CMTime!
+    var currentStatus: AVPlayerItemStatus!
 
-    private var fileUrl : URL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
+    let player = AVPlayer()
+    var debugText = ""
+    var fileUrl : URL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
     // UINavigationControllerDelegate method
     public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
         return [UIInterfaceOrientationMask.landscapeLeft , UIInterfaceOrientationMask.landscapeRight]
     }
 
-    public func setURL(url : URL) {
+    public func setURL(url : URL, describe : String) {
         fileUrl = url
+        debugText = describe
     }
     
     private func setOrientation() {
@@ -47,6 +53,24 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         if (UIApplication.shared.statusBarOrientation.isPortrait) {
             let value = UIInterfaceOrientation.landscapeLeft.rawValue
             UIDevice.current.setValue(value, forKey: "orientation")
+        }
+    }
+    
+    // Mark https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Properties.html
+    // Properties practice
+    private var _isShow : Bool = false
+    var isShow: Bool {
+        get {
+            return _isShow
+        }
+        set(bool) {
+            _isShow = bool
+            
+            if(_isShow) {
+                player.isMuted = false
+            } else {
+                player.isMuted = true
+            }
         }
     }
     
@@ -58,11 +82,44 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         playPauseButton.isHidden = true
         fastForwardButton.isHidden = true
     }
+
+    private func setPanGesture() {
+        let pan = UIPanGestureRecognizer(
+            target:self,
+            action:#selector(self.pan))
+        pan.minimumNumberOfTouches = 1
+        pan.maximumNumberOfTouches = 1
+        //view.addGestureRecognizer(pan)
+        seekInfoLabel.isUserInteractionEnabled = true
+        seekInfoLabel.addGestureRecognizer(pan)
+    }
     
+    func pan(recognizer:UIPanGestureRecognizer) {
+        let traslation = recognizer.translation(in: self.view)
+        
+        switch recognizer.state {
+            case UIGestureRecognizerState.began:
+                seekInfoLabel.textColor = UIColor.red
+                _currentTime = self.player.currentTime()
+            case UIGestureRecognizerState.changed:
+                let time = reviseTime(CMTimeGetSeconds(_currentTime) + Float64(traslation.x / 10))
+                
+                self.seekInfoLabel.text = self.createTimeString(time: Float(time))
+            case UIGestureRecognizerState.ended:
+                seekInfoLabel.textColor = UIColor.clear
+                currentTime = CMTimeGetSeconds(_currentTime) + Float64(traslation.x / 10)
+            default: break
+            
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setOrientation()
+        setPanGesture()
         hideButton()
+        
+        debugLabel.text = debugText
     }
     
     private func shouldAutorotate() -> Bool {
@@ -83,8 +140,18 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             return CMTimeGetSeconds(player.currentTime())
         }
         set {
-            let newTime = CMTimeMakeWithSeconds(newValue, 1)
+            let newTime = CMTimeMakeWithSeconds(reviseTime(newValue), 1)
             player.seek(to: newTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+        }
+    }
+    
+    private func reviseTime(_ newValue :Double) -> Float64 {
+        if(newValue < 0) {
+            return 0
+        } else if (newValue >= CMTimeGetSeconds((self.player.currentItem?.duration)!)) {
+            return CMTimeGetSeconds((self.player.currentItem?.duration)!)
+        } else {
+            return newValue
         }
     }
     
@@ -160,17 +227,13 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
         addObserver(self, forKeyPath: #keyPath(PlayerViewController.player.rate), options: [.new, .initial], context: &playerViewControllerKVOContext)
         addObserver(self, forKeyPath: #keyPath(PlayerViewController.player.currentItem.status), options: [.new, .initial], context: &playerViewControllerKVOContext)
         
-        //addObserver(self, forKeyPath: #selector("moviePlayBackFinished:"), options: .AVPlayerItemDidPlayToEndTimeNotification, context: nil)
-        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.moviePlayBackFinished),
             name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
             object: player.currentItem)
-        playerView.playerLayer.player = player
         
-        //let movieURL = Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!
-        //let fileURL = URL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8")
+        playerView.playerLayer.player = player
         
         asset = AVURLAsset(url: fileUrl, options: nil)
         
@@ -185,10 +248,38 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     // Auto replay
-    func moviePlayBackFinished() {
-        let newTime = CMTimeMakeWithSeconds(0, 1)
-        player.seek(to: newTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
-        player.play()
+    func moviePlayBackFinished(notification: Notification) {
+       if((notification.object! as! AVPlayerItem) == player.currentItem) {
+            let newTime = CMTimeMakeWithSeconds(0, 1)
+            player.seek(to: newTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+            player.play()
+        }
+    }
+    
+    
+    func getBufferTime1() {
+        
+        var loadedTimeRanges = self.player.currentItem?.loadedTimeRanges
+        
+        if(loadedTimeRanges != nil && !(loadedTimeRanges?.isEmpty)!) {
+            let timeRange = loadedTimeRanges?[0].timeRangeValue
+            let startSeconds = CMTimeGetSeconds((timeRange?.start)!)
+            let durationSeconds = CMTimeGetSeconds((timeRange?.duration)!)
+            let result = startSeconds + durationSeconds
+            print(result)
+        }
+    }
+    
+    func getBufferTime() {
+        let time : CMTime
+        
+        if let range = self.player.currentItem?.loadedTimeRanges.first {
+            time = CMTimeRangeGetEnd(range.timeRangeValue)
+        } else {
+            time = kCMTimeZero
+        }
+        
+        print(CMTimeShow(time))
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -261,6 +352,12 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
                  it our player's current item.
                  */
                 self.playerItem = AVPlayerItem(asset: newAsset)
+                
+                /*self.playerItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options:[.new, .initial], context:&playerViewControllerKVOContext);
+                self.playerItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options:[.new, .initial], context:&playerViewControllerKVOContext);
+                
+                self.playerItem?.addObserver(self, forKeyPath: "loadedTimeRanges", options:[.new, .initial], context:&playerViewControllerKVOContext);*/
+                
             }
         }
     }
@@ -301,6 +398,8 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
     
     // Update our UI when player or `player.currentItem` changes.
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        
+        
         // Make sure the this KVO callback was intended for this view controller.
         guard context == &playerViewControllerKVOContext else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
@@ -327,9 +426,12 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             let newDurationSeconds = hasValidDuration ? CMTimeGetSeconds(newDuration) : 0.0
             let currentTime = hasValidDuration ? Float(CMTimeGetSeconds(player.currentTime())) : 0.0
             
-            timeSlider.maximumValue = Float(newDurationSeconds)
-            
-            timeSlider.value = currentTime
+            if(!skipSetSliderValue()) {
+                timeSlider.maximumValue = Float(newDurationSeconds)
+                timeSlider.value = currentTime
+                durationLabel.text = createTimeString(time: Float(newDurationSeconds))
+                startTimeLabel.text = createTimeString(time: currentTime)
+            }
             
             hasValidDuration = true
             
@@ -342,10 +444,9 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
             timeSlider.isEnabled = hasValidDuration
             
             startTimeLabel.isEnabled = hasValidDuration
-            startTimeLabel.text = createTimeString(time: currentTime)
             
             durationLabel.isEnabled = hasValidDuration
-            durationLabel.text = createTimeString(time: Float(newDurationSeconds))
+           
         }
         else if keyPath == #keyPath(PlayerViewController.player.rate) {
             // Update `playPauseButton` image.
@@ -378,10 +479,37 @@ class PlayerViewController: UIViewController, UINavigationControllerDelegate {
                 handleErrorWithMessage(player.currentItem?.error?.localizedDescription, error:player.currentItem?.error)
             }
             
-            if (newStatus == .readyToPlay) {
-                player.play()
+            if (newStatus == .readyToPlay && currentStatus != newStatus) {
+                readyToPlay()
             }
+            
+            currentStatus = newStatus
+            print("new status " , newStatus.rawValue)
+
+        } else if (object as? AVPlayerItem == playerItem && keyPath == "loadedTimeRanges") {
+            let time : CMTime
+
+            if let range = self.player.currentItem?.loadedTimeRanges.first {
+                time = CMTimeRangeGetEnd(range.timeRangeValue)
+            } else {
+                time = kCMTimeZero
+            }
+            
+            //print(CMTimeShow(time))
         }
+    }
+    
+    
+    func skipSetSliderValue() -> Bool {
+        return false
+    }
+    
+    func readyToPlay() {
+        player.play()
+    }
+
+    func isControllerHidden(isHidden : Bool) {
+    
     }
     
     // Trigger KVO for anyone observing our properties affected by player and player.currentItem

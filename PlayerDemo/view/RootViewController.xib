@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootViewController" customModule="PlayerDemo" customModuleProvider="target">
             <connections>
                 <outlet property="naviPlayerBtn" destination="1Fw-oC-fII" id="E2l-e1-0E5"/>
+                <outlet property="optionsBtn" destination="83D-8E-wOz" id="Gjp-Ha-hJh"/>
+                <outlet property="startOverBtn" destination="7sh-XJ-BVN" id="oUT-oP-jiA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="zappingBtn" destination="qTt-Rh-FvO" id="MaO-GY-Ema"/>
             </connections>
@@ -45,13 +47,37 @@
                         <action selector="touchUpInsideZappingBtn:" destination="-1" eventType="touchUpInside" id="0BK-7R-9vn"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sh-XJ-BVN">
+                    <rect key="frame" x="120" y="397" width="135" height="35"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <state key="normal" title="Start Over Page">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.89608304790000004" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="touchUpInsideStartOverBtn:" destination="-1" eventType="touchUpInside" id="l7C-UK-76m"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83D-8E-wOz">
+                    <rect key="frame" x="155" y="440" width="67" height="35"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <state key="normal" title="Options">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.89608304790000004" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="touchUpInsideOptions:" destination="-1" eventType="touchUpInside" id="FAW-MU-hkK"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="83D-8E-wOz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="1" id="B2Q-LK-YBR"/>
+                <constraint firstItem="7sh-XJ-BVN" firstAttribute="top" secondItem="qTt-Rh-FvO" secondAttribute="bottom" constant="8" symbolic="YES" id="CvG-sL-UAA"/>
                 <constraint firstItem="qTt-Rh-FvO" firstAttribute="top" secondItem="1Fw-oC-fII" secondAttribute="bottom" constant="8" symbolic="YES" id="GYs-p8-Egq"/>
                 <constraint firstItem="1Fw-oC-fII" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Naa-cI-9fk"/>
+                <constraint firstItem="7sh-XJ-BVN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="P2g-9v-pPl"/>
                 <constraint firstItem="qTt-Rh-FvO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="14.5" id="abA-y1-XEn"/>
                 <constraint firstItem="1Fw-oC-fII" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cGZ-rs-grO"/>
+                <constraint firstItem="83D-8E-wOz" firstAttribute="top" secondItem="7sh-XJ-BVN" secondAttribute="bottom" constant="8" symbolic="YES" id="gc8-Pn-xaH"/>
             </constraints>
             <point key="canvasLocation" x="35.5" y="54.5"/>
         </view>

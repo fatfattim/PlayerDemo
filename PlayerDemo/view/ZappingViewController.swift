@@ -12,9 +12,14 @@ import UIKit
 
 class ZappingViewController: UIViewController , UINavigationControllerDelegate , UIScrollViewDelegate {
     let COUNT_PAGE = 6
+
+    var callback:((Int)->PlayerViewController)?
+    
     var viewControllers: NSMutableArray = []
     var currentPage = 0
+    var barIsHidden = false
 
+    @IBOutlet weak var customNavi: UINavigationBar!
     @IBOutlet weak var scrollView: UIScrollView!
     // MARK: - UINavigationControllerDelegate method
     public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
@@ -37,6 +42,10 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         // a possible optimization would be to unload the views+controllers which are no longer visible
     }
     
+    public func setCallback(callback:@escaping (Int)->PlayerViewController) {
+        self.callback = callback
+    }
+
     private func setOrientation() {
         self.navigationController?.delegate = self
         if (UIApplication.shared.statusBarOrientation.isPortrait) {
@@ -48,8 +57,57 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
     override func viewDidLoad() {
         super.viewDidLoad()
         setOrientation()
+        setNavigation()
+        setToggleEvent()
     }
     
+    private func setToggleEvent() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.toggle(_:)))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(gesture)
+    }
+    
+    func toggle(_ sender: UITapGestureRecognizer) {
+        setHiddenTask(isHidden: !barIsHidden)
+    }
+    
+    private func setHiddenTask(isHidden: Bool) {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+            self.customNavi.isHidden = true
+            
+            for viewController in self.viewControllers {
+                if((viewController as? String) != nil) {
+                    continue
+                }
+                
+                (viewController as! PlayerViewController).isControllerHidden(isHidden: isHidden)
+            }
+            self.barIsHidden = isHidden
+            self.customNavi.isHidden = isHidden
+        }, completion: nil)
+    }
+    
+    private func setNavigation() {
+        self.navigationController?.navigationBar.isHidden = true
+        // Create a navigation item with a title
+        let navigationItem = UINavigationItem()
+        navigationItem.title = "ZappingHa" //If you want to set a tilte set here.Whatever you want set here.
+        
+        // Create  button for navigation item with refresh
+        let refreshButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action:#selector(self.actionBack))
+
+        // I set refreshButton for the navigation item
+        navigationItem.leftBarButtonItem = refreshButton
+        
+        customNavi.setItems([navigationItem], animated: false)
+    }
+    
+    func actionBack(sender: UIBarButtonItem)
+    {
+        self.navigationController?.navigationBar.isHidden = false
+         self.navigationController?.popViewController(animated: true)
+    }
+
     private func shouldAutorotate() -> Bool {
         return true
     }
@@ -76,7 +134,7 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         scrollView.clipsToBounds = false
         scrollView.bounces = false
 
-        let width = scrollView.frame.width * CGFloat(COUNT_PAGE)
+        let width = scrollView.frame.width * CGFloat(COUNT_PAGE - 1)
         // height is magic number which match offset y, I do not know why....
         scrollView.contentSize = CGSize(width: width,
                                         height: (self.scrollView.frame.height - self.scrollView.frame.origin.y))
@@ -94,18 +152,7 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         // replace the placeholder if necessary
         let controller : PlayerViewController
         if viewControllers[page] is String {
-            controller = PlayerViewController()
-            
-            let urlIndex = page % 3
-            
-            if (urlIndex == 0) {
-                controller.setURL(url: URL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8")!)
-            } else if (urlIndex == 1) {
-                controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/ch1.m3u8")!)
-            } else {
-                controller.setURL(url : Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!)
-            }
-            
+            controller = self.callback!(page)
             viewControllers.replaceObject(at: page, with: controller)
         } else {
             controller = viewControllers[page] as! PlayerViewController
@@ -126,6 +173,12 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
             scrollView.addSubview(controller.view)
             controller.didMove(toParentViewController: self)
             
+        }
+        
+        if(currentPage == page) {
+            controller.isShow = true
+        } else {
+            controller.isShow = false
         }
     }
 }

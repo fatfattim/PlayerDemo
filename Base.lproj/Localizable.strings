@@ -5,8 +5,11 @@
   Created by TimChen on 2017/5/19.
   Copyright © 2017年 dogtim. All rights reserved.
 */
-"Player" = "プレーヤー";
-"Zapping" = "ザッピン";
-"Back" = "前に";
-"Enter Player Page" = "入る プレーヤー ページ";
-"Enter Zapping Page" = "入る Zapping ページ";
+"Player" = "Player";
+"Zapping" = "Zapping";
+"Back" = "Back";
+"Enter Player Page" = "Enter Player Page";
+"Enter Zapping Page" = "Enter Zapping Page";
+"Start Over Page" = "Start Over Page";
+"Demo" = "Demo";
+"Options" = "Options";
