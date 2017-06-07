@@ -12,37 +12,32 @@ class PlayerBuilder {
     static func build(_ uiMode: String, playerMode: String, urls: [CellItem]) -> UIViewController {
         let vc : UIViewController
         if(uiMode == "Zapping") {
-            
-            if(playerMode == "Normal") {
-                vc = ZappingViewController()
-                (vc as? ZappingViewController)?.doSomething(callback: { (page) in
-                    let controller = PlayerViewController()
-                    let urlIndex = page % urls.count
-                    controller.setURL(url: URL(string: urls[urlIndex].name)!, describe : "")
-                    return controller
-                })
-            } else {
-                vc = ZappingViewController()
-                (vc as? ZappingViewController)?.doSomething(callback: { (page) in
-                    
-                    let controller = StartOverPlayerVCNew(nibName: "PlayerViewController", bundle: nil)
-                    let urlIndex = page % urls.count
-                    controller.setURL(url: URL(string: urls[urlIndex].name)!, describe : "")
-                    return controller
-                })
-            }
-            
+            vc = ZappingViewController()
+            (vc as? ZappingViewController)?.setCallback(callback: { (page) in
+                let urlIndex = page % urls.count
+                let controller = getController(playerMode, url: urls[urlIndex].name)
+                controller.setURL(url: URL(string: urls[urlIndex].name)!, describe : "")
+                
+                return controller
+            })
             vc.title = NSLocalizedString("Zapping", comment: "Zapping Title")
         } else {
-            
-            if(playerMode == "Normal") {
-                vc = PlayerViewController()
-            } else {
-                vc = StartOverPlayerVCNew(nibName: "PlayerViewController", bundle: nil)
-            }
-            
+            vc = getController(playerMode, url: urls[0].name)
             vc.title = NSLocalizedString("Player", comment: "Player Title")
         }
+
+        return vc
+    }
+    
+    static func getController(_ mode : String, url: String) -> PlayerViewController {
+        let vc : PlayerViewController
+        
+        if(mode == "Normal") {
+            vc = PlayerViewController()
+        } else {
+            vc = StartOverPlayerVCNew(nibName: "PlayerViewController", bundle: nil)
+        }
+        vc.setURL(url: URL(string: url)!, describe : "")
         return vc
     }
 

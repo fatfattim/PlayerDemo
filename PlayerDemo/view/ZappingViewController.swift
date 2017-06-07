@@ -42,7 +42,7 @@ class ZappingViewController: UIViewController , UINavigationControllerDelegate ,
         // a possible optimization would be to unload the views+controllers which are no longer visible
     }
     
-    public func doSomething(callback:@escaping (Int)->PlayerViewController) {
+    public func setCallback(callback:@escaping (Int)->PlayerViewController) {
         self.callback = callback
     }
 
