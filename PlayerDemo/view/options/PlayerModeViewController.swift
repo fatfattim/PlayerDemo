@@ -9,7 +9,7 @@
 import UIKit
 
 class PlayerBuilder {
-    static func build(_ uiMode: String, playerMode: String) -> UIViewController {
+    static func build(_ uiMode: String, playerMode: String, urls: [CellItem]) -> UIViewController {
         let vc : UIViewController
         if(uiMode == "Zapping") {
             
@@ -17,13 +17,8 @@ class PlayerBuilder {
                 vc = ZappingViewController()
                 (vc as? ZappingViewController)?.doSomething(callback: { (page) in
                     let controller = PlayerViewController()
-                    let urlIndex = page % 2
-                    
-                    if (urlIndex == 0) {
-                        controller.setURL(url: URL(string: "http://linear.demo.kkstream.tv/poc.m3u8")!, describe : "apple demo m3u8")
-                    } else {
-                        controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/poc2.m3u8")!, describe : "Live")
-                    }
+                    let urlIndex = page % urls.count
+                    controller.setURL(url: URL(string: urls[urlIndex].name)!, describe : "")
                     return controller
                 })
             } else {
@@ -31,13 +26,8 @@ class PlayerBuilder {
                 (vc as? ZappingViewController)?.doSomething(callback: { (page) in
                     
                     let controller = StartOverPlayerVCNew(nibName: "PlayerViewController", bundle: nil)
-                    let urlIndex = page % 2
-                    
-                    if (urlIndex == 0) {
-                        controller.setURL(url: URL(string: "http://linear.demo.kkstream.tv/poc.m3u8")!, describe : "apple demo m3u8")
-                    } else {
-                        controller.setURL(url : URL(string: "http://linear.demo.kkstream.tv/poc2.m3u8")!, describe : "Live")
-                    }
+                    let urlIndex = page % urls.count
+                    controller.setURL(url: URL(string: urls[urlIndex].name)!, describe : "")
                     return controller
                 })
             }
@@ -55,6 +45,7 @@ class PlayerBuilder {
         }
         return vc
     }
+
 }
 
 class PlayerModeViewController: UITableViewController {
@@ -70,8 +61,7 @@ class PlayerModeViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        tableView.register(
-            UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         info = createInfo()
 
@@ -149,31 +139,40 @@ class PlayerModeViewController: UITableViewController {
         
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = NSLineBreakMode.byCharWrapping
-        
-//        UIView.animate(withDuration: 12.0, delay: 1, options: ([.curveLinear, .repeat]), animations: {() -> Void in
-//            cell.textLabel?.center = CGPoint(x: 0 - (cell.textLabel?.bounds.size.width)! / 2, y: (cell.textLabel?.center.y)!)
-//        }, completion:  { _ in })
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(indexPath.section == info.count - 1) {
+        if(indexPath.section == info.count - 1) { // Last one button
             
-            var uiMode = ""
+            var uiMode = info[0].filter({ (CellItem) -> Bool in
+                CellItem.isSelected == true
+            })
             
-            let rowsCount = self.tableView.numberOfRows(inSection: 0)
+            var playerMode = info[1].filter({ (CellItem) -> Bool in
+                CellItem.isSelected == true
+            })
             
-            for i in 0..<rowsCount  {
-                let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: 0))!
-                // your custom code (deselecting)
-                
-                if (cell.accessoryType == .checkmark) {
-                    uiMode = (cell.textLabel?.text)!
-                }
+            var urls = info[2].filter({ (CellItem) -> Bool in
+                CellItem.isSelected == true
+            })
+            
+            self.navigationController?.pushViewController(
+                PlayerBuilder.build(uiMode[0].name, playerMode: playerMode[0].name, urls: urls),
+                animated: true)
+
+        } else if (indexPath.section == info.count - 2) {
+            
+            let cell = tableView.cellForRow(at: indexPath)
+            
+            if(info[indexPath.section][indexPath.row].isSelected) {
+                cell?.accessoryType = .none
+                info[indexPath.section][indexPath.row].isSelected = false
+            } else {
+                cell?.accessoryType = .checkmark
+                info[indexPath.section][indexPath.row].isSelected = true
             }
             
-            self.navigationController?.pushViewController(PlayerBuilder.build(uiMode, playerMode: ""), animated: true)
-
         } else {
             let selectedCell = tableView.cellForRow(at: indexPath)
             let rowsCount = self.tableView.numberOfRows(inSection: indexPath.section)
