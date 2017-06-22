@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class RootViewController: UIViewController {
 
@@ -39,6 +40,22 @@ class RootViewController: UIViewController {
         let vc = ZappingViewController()
         vc.title = NSLocalizedString("Zapping", comment: "Zapping Title")
         self.navigationController?.pushViewController(vc, animated: true)
+        
+       
+    }
+    
+    func showAVPlayerViewController() {
+        let moviePlayerViewController = PlayerViewController()
+        //AVPlayer.init
+        
+        // Initialize the AVPlayer
+        moviePlayerViewController.setURL(url: Bundle.main.url(forResource: "ElephantSeals", withExtension: "mov")!)
+        moviePlayerViewController.player.isClosedCaptionDisplayEnabled = true
+        
+        // Present movie player and play when completion
+        self.present(moviePlayerViewController, animated: false, completion: {
+            moviePlayerViewController.player.play()
+        })
     }
 
     @IBAction func touchUpInsidePlayerBtn(_ sender: Any) {
